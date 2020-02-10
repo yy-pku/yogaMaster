@@ -37,12 +37,14 @@ Jsonresponse：
     "data": "[{\"model\": \"yogaMaster.yoga\", \"pk\": \"ayoga\", \"fields\": {\"level\": 1, \"video\": \"avideourl\"}}, {\"model\": \"yogaMaster.yoga\", \"pk\": \"byoga\", \"fields\": {\"level\": 1, \"video\": \"bvideourl\"}}]"  
 }  
 2. Get     http://127.0.0.1:8000/home/getYogaDetail          
-//根据瑜伽名返回对应的分解动作及视频详情  
-request: {"filename":"a.jpg"}  
+//根据瑜伽文件名返回动作图片  
+request:   
+{"filename":"a.jpg"}  
 HttpResponse(image_data, content_type="image/png")  
 3. Get    http://127.0.0.1:8000/usr/getUsrInfo  
 //获取用户信息  
-request: {"userid":"1"}  
+request:   
+{"userid":"1"}  
 Jsonresponse：  
 {  
     "state": "200",  
@@ -103,7 +105,7 @@ result|resultId：int，比对结果id（pk）
 
 ## 进度及问题
 
->对图片资源的请求单独列出来以httpresponse的形式返回，文件以json形式返回  
+>对图片资源的请求单独列出来以httpresponse的形式返回，文字以json形式返回  
 关于图片应该是存储到文件夹下，数据库中存储图片路径  
 读取的时候先从数据库中读取路径，再到相应路径下读取图片返回  
 django生成model时imageFiled在数据库中就是imageField，读取时imageFiled.url  
