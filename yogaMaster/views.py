@@ -101,15 +101,17 @@ def register(request:HttpRequest):
         print(e)
         return HttpResponseBadRequest()
 
+# 标记进度
 # Post    /home/getResult                    //用户根据选中的姿势上传图片得到比较结果
 def getResult(request:HttpRequest):
     print(request.body)
     try:
         payload = simplejson.loads(request.body)
         imgid_id = payload['image']
-        Result.Objects.filter(imgid_id=imgid_id)
+        Result.objects.filter(imgid_id=imgid_id)
     except Exception as e:
-        logging.info(e)
+        # logging.info(e)
+        print(e)
         return HttpResponseBadRequest()
 
 
@@ -119,9 +121,10 @@ def getStudyRecord(request:HttpRequest):
     try:
         payload = simplejson.loads(request.body)
         usrid = payload['usrid']
-        StudyRecord.Objects.filter(usrid_id=usrid)
+        StudyRecord.objects.filter(usrid_id=usrid)
     except Exception as e:
-        logging.info(e)
+        # logging.info(e)
+        print(e)
         return HttpResponseBadRequest()
 
 # Get    /usr/getFavorites                     //获取用户收藏
@@ -130,7 +133,8 @@ def getFavorites(request:HttpRequest):
     try:
         payload = simplejson.loads(request.body)
         usrid = payload['usrid']
-        Favorites.Objects.filter(usrid_id=usrid)
+        Favorites.objects.filter(usrid_id=usrid)
     except Exception as e:
-        logging.info(e)
+        # logging.info(e)
+        print(e)
         return HttpResponseBadRequest()
