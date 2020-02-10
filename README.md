@@ -38,13 +38,38 @@ Jsonresponse：
 }  
 2. Get     http://127.0.0.1:8000/home/getYogaDetail          
 //根据瑜伽名返回对应的分解动作及视频详情  
-3. Post    http://127.0.0.1:8000/home/getResult                      
-//用户根据选中的姿势上传图片得到比较结果  
-4. Get    http://127.0.0.1:8000/usr/getUsrInfo                         
+request: {"filename":"a.jpg"}  
+HttpResponse(image_data, content_type="image/png")  
+3. Get    http://127.0.0.1:8000/usr/getUsrInfo  
 //获取用户信息  
-5. Get    http://127.0.0.1:8000/usr/getStudyRecord                 
+request: {"userid":"1"}  
+Jsonresponse：  
+{  
+    "state": "200",  
+    "message": "获取用户信息成功",  
+    "data": "[{\"model\": \"yogaMaster.user\", \"pk\": 1, \"fields\": {\"usrname\": \"yy\", \"password\": \"abc\", \"usrProfile\": \"yogaMaster/images/avater/2.jpg\"}}]"  
+}
+4. Get    http://127.0.0.1:8000/usr/getUsrAvater  
+//获取用户头像  
+request: {"userid":"1"}  
+HttpResponse(image_data, content_type="image/png")  
+5. post    http://127.0.0.1:8000/usr/register  
+//注册  
+var form = new FormData();  
+form.append("usrProfile", fileInput.files[0], "/C:/Users/yang/Desktop/2.jpg");  
+form.append("usrid", "1");  
+form.append("usrname", "yy");  
+form.append("password", "abc");  
+Jsonresponse：  
+{  
+    "state": "200",  
+    "message": "注册成功"  
+}
+6. Post    http://127.0.0.1:8000/home/getResult  
+//用户根据选中的姿势上传图片得到比较结果
+7. Get    http://127.0.0.1:8000/usr/getStudyRecord  
 //获取用户学习记录  
-6. Get    http://127.0.0.1:8000/usr/getFavorites                       
+8. Get    http://127.0.0.1:8000/usr/getFavorites  
 //获取用户收藏
 
 ## 数据库设计
@@ -78,8 +103,9 @@ result|resultId：int，比对结果id（pk）
 
 ## 进度及问题
 
->关于图片应该是存储到文件夹下，数据库中存储图片路径  
+>对图片资源的请求单独列出来以httpresponse的形式返回，文件以json形式返回  
+关于图片应该是存储到文件夹下，数据库中存储图片路径  
 读取的时候先从数据库中读取路径，再到相应路径下读取图片返回  
-django生成model时imageFiled在数据库中应该是什么类型，varchar吗  
+django生成model时imageFiled在数据库中就是imageField，读取时imageFiled.url  
 同一图片不同显示分辨率应需要多个尺寸  
 关于数据库的设计还有问题，restful下应该将所有前端需要的资源在一个接口请求中都返回，这样的话要么数据库冗余，要么执行多次查询

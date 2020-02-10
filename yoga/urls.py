@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from yogaMaster.views import getFavorites,getStudyRecord,getUsrInfo,getResult,getYogaDetail,getYogaList
+from yogaMaster.views import getUsrAvater,register,getFavorites,getStudyRecord,getUsrInfo,getResult,getYogaDetail,getYogaList
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,5 +25,7 @@ urlpatterns = [
     path('usr/getUsrInfo', getUsrInfo),
     path('usr/getStudyRecord', getStudyRecord),
     path('usr/getFavorites', getFavorites),
+    path('usr/register', register),
+    path('usr/getUsrAvater', getUsrAvater),
 
 ]
