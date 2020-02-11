@@ -42,7 +42,8 @@ request: {"imgid":"1"}
 HttpResponse(image_data, content_type="image/png")  
 3. Get    http://127.0.0.1:8000/usr/getUsrInfo  
 //获取用户信息  
-request: {"userid":"1"}  
+request:   
+{"userid":"1"}  
 Jsonresponse：  
 {  
     "state": "200",  

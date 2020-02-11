@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f36cebb-ad67-4315-a76b-5fc8500b0ebc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/yogaMaster/images/result/a.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yogaMaster/images/upload/3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yogaMaster/images/upload/3_uESOH8y.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yogaMaster/images/yoga/1.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yogaMaster/images/yoga/a.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/yogaMaster/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/yogaMaster/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
