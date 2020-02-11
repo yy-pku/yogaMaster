@@ -2,15 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f36cebb-ad67-4315-a76b-5fc8500b0ebc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/yogaMaster/images/avater/2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yogaMaster/images/avater/2_y8Mk6yG.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yogaMaster/images/yoga/a.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yogaMaster/migrations/0003_auto_20200210_2037.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yogaMaster/images/result/a.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yogaMaster/images/upload/3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yogaMaster/images/upload/3_uESOH8y.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yogaMaster/images/yoga/1.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yoga/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/yoga/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yoga/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/yoga/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yogaMaster/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/yogaMaster/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yogaMaster/images/yoga/a.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/yogaMaster/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/yogaMaster/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,6 +33,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/yogaMaster/images/result" />
     <property name="settings.editor.selected.configurable" value="PyConsoleConfigurable.Python Console" />
   </component>
   <component name="PyConsoleOptionsProvider">
@@ -46,6 +45,9 @@
     </option>
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\PycharmProjects\yoga\yogaMaster\images\result" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\PycharmProjects\yoga\yogaMaster\images" />
     </key>

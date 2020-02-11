@@ -7,6 +7,7 @@ from _pytest import logging
 from django.core import serializers
 from django.http import HttpRequest, HttpResponseBadRequest, JsonResponse, HttpResponse
 import simplejson
+from django.utils import timezone
 
 from yoga import settings
 from .models import User,Yoga,YogaImage,Result,StudyRecord,Favorites
@@ -36,8 +37,8 @@ def getYogaDetail(request:HttpRequest):
     print(request.body)
     try:
         payload = simplejson.loads(request.body)
-        filename = payload['filename']
-        imagepath = os.path.join(settings.BASE_DIR, "yogaMaster\images\yoga\{}".format(filename))
+        imgid = payload['imgid']
+        imagepath = os.path.join(settings.BASE_DIR, "yogaMaster\images\yoga\{}.jpg".format(imgid))
         print(imagepath)
         with open(imagepath, 'rb') as f:
             image_data = f.read()
@@ -101,19 +102,33 @@ def register(request:HttpRequest):
         print(e)
         return HttpResponseBadRequest()
 
-# 标记进度
 # Post    /home/getResult                    //用户根据选中的姿势上传图片得到比较结果
 def getResult(request:HttpRequest):
-    print(request.body)
     try:
-        payload = simplejson.loads(request.body)
-        imgid_id = payload['image']
-        Result.objects.filter(imgid_id=imgid_id)
+        result = Result()
+        imgid = request.POST.get('imgid')
+        result.imgid = YogaImage.objects.get(imgid=imgid)
+        original = YogaImage.objects.get(imgid=imgid).image
+        result.uploadImg = request.FILES.get('uploadimg')
+        result.compareImg = compareYoga(result.uploadImg.url,original.url)
+        result.content = 'some difference'
+        result.compareTime = timezone.now()
+        result.save()
+        imagepath = os.path.join(settings.BASE_DIR, result.compareImg.url)
+        print(imagepath)
+        with open(imagepath, 'rb') as f:
+            image_data = f.read()
+        return HttpResponse(image_data, content_type="image/png")
     except Exception as e:
         # logging.info(e)
         print(e)
         return HttpResponseBadRequest()
 
+def compareYoga(uploadimg:str,original:str):
+    print('compareYoga....')
+    #填充具体算法
+    compareImg = "yogaMaster/images/result/{}".format('a.jpg')
+    return compareImg
 
 # Get    /usr/getStudyRecord               //获取用户学习记录
 def getStudyRecord(request:HttpRequest):
