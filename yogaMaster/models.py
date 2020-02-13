@@ -27,7 +27,7 @@ class YogaImage(models.Model):
     imgid = models.AutoField(primary_key='true')
     yogaName = models.ForeignKey('yoga',on_delete=models.CASCADE)
     imgDescription = models.CharField(max_length=255)
-    image = models.ImageField()
+    image = models.ImageField(upload_to='yogaMaster/images/yoga')
 
 class Result(models.Model):
     class Meta:

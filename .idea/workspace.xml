@@ -2,8 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f36cebb-ad67-4315-a76b-5fc8500b0ebc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/yogaMaster/images/avater/back.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yogaMaster/images/avater/back_PdltI90.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yogaMaster/images/upload/back.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yogaMaster/images/yoga/2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yogaMaster/images/yoga/3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yogaMaster/images/yoga/4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yogaMaster/images/yogaMaster/images/avater/3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yogaMaster/images/yogaMaster/images/upload/3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yogaMaster/migrations/0004_auto_20200212_1615.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yoga/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/yoga/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yoga/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/yoga/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yogaMaster/images/yoga/1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/yogaMaster/images/yoga/1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yogaMaster/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/yogaMaster/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yogaMaster/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/yogaMaster/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,8 +40,9 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/yogaMaster/images/result" />
-    <property name="settings.editor.selected.configurable" value="PyConsoleConfigurable.Python Console" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -39,11 +53,12 @@
     </option>
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\PycharmProjects\yoga\yogaMaster\images\result" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\PycharmProjects\yoga\yogaMaster\images" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\github\yogaMaster\yogaMaster\images\yoga" />
+      <recent name="E:\PycharmProjects\yoga\yogaMaster\images\result" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -68,12 +83,67 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1580561285529</updated>
+      <workItem from="1581488349205" duration="23506000" />
+      <workItem from="1581561781425" duration="14749000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
+        <entry key="1">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="structure">
+                    <value>
+                      <list>
+                        <option value="dir:D:/github/yogaMaster/yogaMaster/images/video" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+        <entry key="2">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="roots">
+                    <value>
+                      <list>
+                        <option value="$PROJECT_DIR$" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
         <entry key="MAIN">
           <value>
             <State>
@@ -82,6 +152,12 @@
           </value>
         </entry>
       </map>
+    </option>
+    <option name="OPEN_TABS">
+      <set>
+        <option value="1" />
+        <option value="2" />
+      </set>
     </option>
   </component>
   <component name="VcsManagerConfiguration">
