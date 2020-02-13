@@ -2,21 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f36cebb-ad67-4315-a76b-5fc8500b0ebc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/yogaMaster/images/avater/back.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yogaMaster/images/avater/back_PdltI90.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yogaMaster/images/upload/back.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yogaMaster/images/yoga/2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yogaMaster/images/yoga/3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yogaMaster/images/yoga/4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yogaMaster/images/yogaMaster/images/avater/3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yogaMaster/images/yogaMaster/images/upload/3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yogaMaster/migrations/0004_auto_20200212_1615.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yogaMaster/images/upload/1.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yogaMaster/images/upload/个人形象角色.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yoga/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/yoga/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yoga/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/yoga/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yogaMaster/images/yoga/1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/yogaMaster/images/yoga/1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yogaMaster/images/yogaMaster/images/avater/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/yogaMaster/images/yogaMaster/images/upload/3.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/yogaMaster/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/yogaMaster/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yogaMaster/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/yogaMaster/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -84,8 +76,17 @@
       <option name="presentableId" value="Default" />
       <updated>1580561285529</updated>
       <workItem from="1581488349205" duration="23506000" />
-      <workItem from="1581561781425" duration="14749000" />
+      <workItem from="1581561781425" duration="14970000" />
+      <workItem from="1581592355542" duration="2746000" />
     </task>
+    <task id="LOCAL-00001" summary="更改图片前后端传递方式">
+      <created>1581584622264</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1581584622264</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -162,5 +163,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="更改图片前后端传递方式" />
+    <option name="LAST_COMMIT_MESSAGE" value="更改图片前后端传递方式" />
   </component>
 </project>
