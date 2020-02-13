@@ -16,6 +16,9 @@ from django.utils.translation import gettext_lazy as _
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+MEDIA_URL = '/yogaMaster/images/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'yogaMaster/images/')
+WEB_HOST_MEDIA_URL = 'http://127.0.0.1:8000/'
 
 
 # Quick-start development settings - unsuitable for production
@@ -79,9 +82,9 @@ WSGI_APPLICATION = 'yoga.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'test',
+        'NAME': 'springtest',
         'USER': 'root',
-        'PASSWORD':'root',
+        'PASSWORD':'123456',
         'HOST':'localhost',
         'PORT':'3306',
     }
