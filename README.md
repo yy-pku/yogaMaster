@@ -40,16 +40,11 @@ Python manage.py  runserver
 2. Get     http://127.0.0.1:8000/home/getYogaDetail          
   //根据每个瑜伽动作文件名返回对应的图片  
   request: {"yogaName":"ayoga"}   
-  Jsonresponse：
-
-  {
-
-  ​    "state": "200",
-
-  ​    "message": "获取瑜伽图片列表成功",
-
-  ​    "data": "http://127.0.0.1:8000/yogaMaster/images/yoga/2.jpg[/--sp--/]http://127.0.0.1:8000/yogaMaster/images/yoga/3.jpg[/--sp--/]http://127.0.0.1:8000/yogaMaster/images/yoga/4.jpg"
-
+  Jsonresponse：  
+  {  
+  ​    "state": "200",  
+  ​    "message": "获取瑜伽图片列表成功",  
+  ​    "data": "http://127.0.0.1:8000/yogaMaster/images/yoga/2.jpg[/--sp--/]http://127.0.0.1:8000/yogaMaster/images/yoga/3.jpg[/--sp--/]http://127.0.0.1:8000/yogaMaster/images/yoga/4.jpg"  
   }
 
 3. Get    http://127.0.0.1:8000/usr/getUsrInfo  
@@ -72,7 +67,6 @@ Python manage.py  runserver
   //注册  
   var form = new FormData();  
   form.append("usrProfile", fileInput.files[0], "/C:/Users/yang/Desktop/2.jpg");  
-  form.append("usrid", "1");  
   form.append("usrname", "yy");  
   form.append("password", "abc");  
   Jsonresponse：  
@@ -91,36 +85,23 @@ Python manage.py  runserver
 
 7. Get    http://127.0.0.1:8000/usr/getStudyRecord  
   //获取用户学习记录  
-
-  request:   
+  request:
   {"usrid":"1"}  
-  Jsonresponse：
-
-    {
-
-  ​    "state": "200",
-
-  ​    "message": "获取学习记录成功",
-
-  ​    "data": "http://127.0.0.1:8000/yogaMaster/images/result/a.jpg"
-
+  Jsonresponse：  
+   {  
+  ​    "state": "200",  
+  ​    "message": "获取学习记录成功",  
+  ​    "data": "http://127.0.0.1:8000/yogaMaster/images/result/a.jpg"  
   }
 
 8. Get    http://127.0.0.1:8000/usr/getFavorites  
-  //获取用户收藏
-
-  request:   
-  {"usrid":"1"}  
+  //获取用户收藏  
+  request:   {"usrid":"1"}  
   Jsonresponse：  
-
-  {
-
-  ​    "state": "200",
-
-  ​    "message": "获取收藏列表成功",
-
-  ​    "data": "http://127.0.0.1:8000/yogaMaster/images/yoga/1.jpg[/--sp--/]http://127.0.0.1:8000/yogaMaster/images/yoga/2.jpg[/--sp--/]http://127.0.0.1:8000/yogaMaster/images/yoga/3.jpg[/--sp--/]http://127.0.0.1:8000/yogaMaster/images/yoga/4.jpg"
-
+  {  
+  ​    "state": "200",  
+  ​    "message": "获取收藏列表成功",  
+  ​    "data": "http://127.0.0.1:8000/yogaMaster/images/yoga/1.jpg[/--sp--/]http://127.0.0.1:8000/yogaMaster/images/yoga/2.jpg[/--sp--/]http://127.0.0.1:8000/yogaMaster/images/yoga/3.jpg[/--sp--/]http://127.0.0.1:8000/yogaMaster/images/yoga/4.jpg"  
   }
 
 ## 数据库设计

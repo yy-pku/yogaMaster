@@ -82,9 +82,9 @@ WSGI_APPLICATION = 'yoga.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'springtest',
+        'NAME': 'test',
         'USER': 'root',
-        'PASSWORD':'123456',
+        'PASSWORD':'root',
         'HOST':'localhost',
         'PORT':'3306',
     }

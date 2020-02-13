@@ -2,19 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f36cebb-ad67-4315-a76b-5fc8500b0ebc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/yogaMaster/images/avater/back.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yogaMaster/images/avater/back_PdltI90.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yogaMaster/images/upload/back.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yogaMaster/images/yoga/2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yogaMaster/images/yoga/3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yogaMaster/images/yoga/4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yogaMaster/images/yogaMaster/images/avater/3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yogaMaster/images/yogaMaster/images/upload/3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yogaMaster/migrations/0004_auto_20200212_1615.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yogaMaster/images/avater/2_fGrYuH2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yogaMaster/images/avater/2_pGzVHGm.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yogaMaster/images/upload/2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yogaMaster/images/upload/2_1PFziSC.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yogaMaster/images/upload/2_9iowNyo.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yoga/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/yoga/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yoga/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/yoga/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yogaMaster/images/yoga/1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/yogaMaster/images/yoga/1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yogaMaster/images/avater/back.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/yogaMaster/images/avater/back_PdltI90.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/yogaMaster/images/upload/3_uESOH8y.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/upload/3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yogaMaster/images/upload/back.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/yogaMaster/images/yogaMaster/images/avater/3.png" beforeDir="false" afterPath="$PROJECT_DIR$/yogaMaster/images/avater/3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yogaMaster/images/yogaMaster/images/upload/3.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/yogaMaster/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/yogaMaster/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yogaMaster/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/yogaMaster/views.py" afterDir="false" />
     </list>
@@ -53,12 +54,16 @@
     </option>
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\PycharmProjects\yoga\yogaMaster\images" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\github\yogaMaster\yogaMaster\images\yoga" />
       <recent name="E:\PycharmProjects\yoga\yogaMaster\images\result" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\PycharmProjects\yoga\yogaMaster\images" />
+      <recent name="E:\PycharmProjects\yoga\yogaMaster\yogaMaster\images\upload" />
+      <recent name="E:\PycharmProjects\yoga\yogaMaster\yogaMaster\images\avater" />
+      <recent name="E:\PycharmProjects\yoga\yogaMaster" />
+      <recent name="E:\PycharmProjects\yoga\yogaMaster\images\yogaMaster\images" />
     </key>
   </component>
   <component name="RunDashboard">

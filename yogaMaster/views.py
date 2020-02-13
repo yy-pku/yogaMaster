@@ -44,7 +44,7 @@ def getYogaDetail(request: HttpRequest):
         yogaImglist = YogaImage.objects.filter(yogaName=name)
         for var in yogaImglist:
             print(str(var.image))
-            imagepath = os.path.join(settings.WEB_HOST_MEDIA_URL, str(var.image))
+            imagepath = os.path.join(settings.WEB_HOST_MEDIA_URL, "yogaMaster/images/{}".format(str(var.image)))
             urls += imagepath+'[/--sp--/]'
         return JsonResponse({
             'state': '200',
@@ -66,7 +66,7 @@ def getUsrAvater(request: HttpRequest):
         user = User.objects.get(usrid=usrid)
         print(settings.BASE_DIR)
         print(user.usrProfile)
-        imagepath = os.path.join(settings.BASE_DIR, str(user.usrProfile))
+        imagepath = os.path.join(settings.BASE_DIR, "yogaMaster/images/{}".format(str(user.usrProfile)))
         image_data = picture(imagepath)
         return HttpResponse(image_data, content_type="image/png")
     except Exception as e:
@@ -94,16 +94,15 @@ def getUsrInfo(request: HttpRequest):
         return HttpResponseBadRequest()
 
 
-# post    /usr/register    //注册
+# post    /usr/register    //用户注册
 def register(request: HttpRequest):
     try:
         user = User()
-        user.usrid = request.POST.get('usrid')
         user.usrname = request.POST.get('usrname')
         user.password = request.POST.get('password')
         user.usrProfile = request.FILES.get('usrProfile')
         user.save()
-
+        print(user)
         return JsonResponse({
             'state': '200',
             'message': '注册成功',
@@ -126,7 +125,7 @@ def getResult(request: HttpRequest):
         result.content = 'some difference'
         result.compareTime = timezone.now()
         result.save()
-        imagepath = os.path.join(settings.BASE_DIR, str(result.compareImg))
+        imagepath = os.path.join(settings.BASE_DIR, "yogaMaster/images/{}".format(str(result.compareImg)))
         image_data = picture(imagepath)
         return HttpResponse(image_data, content_type="image/png")
     except Exception as e:
@@ -138,7 +137,7 @@ def getResult(request: HttpRequest):
 def compareYoga(uploadimg: str, original: str):
     print('compareYoga....')
     # 填充具体算法
-    compareImg = "yogaMaster/images/result/{}".format('a.jpg')
+    compareImg = "result/{}".format('a.jpg')
     return compareImg
 
 
@@ -152,7 +151,7 @@ def getStudyRecord(request: HttpRequest):
         result = StudyRecord.objects.filter(usrid=usrid)
         for sr in result:
             res = Result.objects.get(resultId=sr.resultid.resultId)
-            imagepath = os.path.join(settings.WEB_HOST_MEDIA_URL, str(res.compareImg))
+            imagepath = os.path.join(settings.WEB_HOST_MEDIA_URL, "yogaMaster/images/{}".format(str(res.compareImg)))
             urls += imagepath + '[/--sp--/]'
         return JsonResponse({
             'state': '200',
@@ -176,7 +175,7 @@ def getFavorites(request: HttpRequest):
         for fa in result:
             res = YogaImage.objects.get(imgid=fa.imgid.imgid)
             print(res)
-            imagepath = os.path.join(settings.WEB_HOST_MEDIA_URL, str(res.image))
+            imagepath = os.path.join(settings.WEB_HOST_MEDIA_URL, "yogaMaster/images/{}".format(str(res.image)))
             urls += imagepath + '[/--sp--/]'
         return JsonResponse({
             'state': '200',
