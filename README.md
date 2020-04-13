@@ -156,7 +156,7 @@ Python manage.py  runserver
   ​    "message": "登录成功"
   }
 
-5. (新增) Get    http://127.0.0.1:8000/home/getAllYoga                
+6. (新增) Get    http://127.0.0.1:8000/home/getAllYoga                
   //返回全部的瑜伽列表  
   Jsonresponse：  
   {  
@@ -165,7 +165,7 @@ Python manage.py  runserver
     "data": "[{\"model\": \"yogaMaster.yoga\", \"pk\": \"ayoga\", \"fields\": {\"level\": 1, \"video\": \"avideourl\"}}, {\"model\": \"yogaMaster.yoga\", \"pk\": \"byoga\", \"fields\": {\"level\": 1, \"video\": \"bvideourl\"}}]"  
   }  
 
-6. Get     http://127.0.0.1:8000/home/getYogaDetail          
+7. Get     http://127.0.0.1:8000/home/getYogaDetail          
   //根据每个瑜伽动作文件名返回对应的图片  
   request: {"yogaName":"ayoga"}   
   Jsonresponse：  
@@ -175,7 +175,7 @@ Python manage.py  runserver
   ​    "data": "http://127.0.0.1:8000/yogaMaster/images/yoga/2.jpg[/--sp--/]http://127.0.0.1:8000/yogaMaster/images/yoga/3.jpg[/--sp--/]http://127.0.0.1:8000/yogaMaster/images/yoga/4.jpg"  
   }
 
-7. (新增)  Post    http://127.0.0.1:8000/home/addYoga  
+8. (新增)  Post    http://127.0.0.1:8000/home/addYoga  
   //在后端管理页面上传新的瑜伽信息 
   requset :  
   var form = new FormData();  
@@ -187,7 +187,7 @@ Python manage.py  runserver
   ​    "message": "瑜伽图信息上传成功" 
   }  
 
-8. (新增)  Get    http://127.0.0.1:8000/usr/getAllResult  
+9. (新增)  Get    http://127.0.0.1:8000/home/getAllResult  
   //获取全部的结果比对图片  
   Jsonresponse：  
    {  
