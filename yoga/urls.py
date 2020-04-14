@@ -16,11 +16,18 @@ Including another URLconf
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
-from yogaMaster.views import getUsrAvater,register,getFavorites,getStudyRecord,getUsrInfo,getResult,getYogaDetail,getYogaList
+from yogaMaster.views import getUsrAvater, register, getFavorites, getStudyRecord, getUsrInfo, getResult, getYogaDetail, \
+    getYogaList, getAllUsr, login, getAllYoga, addYoga
 from . import settings
+
+
+def getAllResult(args):
+    pass
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    #小程序接口
     path('home/getYogaList', getYogaList),
     path('home/getYogaDetail', getYogaDetail),
     path('home/getResult', getResult),
@@ -30,6 +37,12 @@ urlpatterns = [
     path('usr/register', register),
     path('usr/getUsrAvater', getUsrAvater),
 
+    #后端管理新增接口
+    path('home/getAllYoga', getAllYoga),
+    path('home/addYoga', addYoga),
+    path('home/getAllResult', getAllResult),
+    path('usr/getAllUsr', getAllUsr),
+    path('usr/login', login),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

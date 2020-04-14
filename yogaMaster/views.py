@@ -187,6 +187,70 @@ def getFavorites(request: HttpRequest):
         print(e)
         return HttpResponseBadRequest()
 
+#下均为未完成接口
+# Get     /usr/getAllUsr                //获取全部用户信息列表
+def getAllUsr():
+    try:
+        return JsonResponse({
+            'state': '200',
+            'message': '获取全部用户信息成功',
+           })
+    except Exception as e:
+        # logging.info(e)
+        print(e)
+        return HttpResponseBadRequest()
+
+# Get     /usr/login                //后台管理员登录，可写死用户名密码admin/admin
+def login(request: HttpRequest):
+    print(request.body)
+    try:
+        return JsonResponse({
+            'state': '200',
+            'message': '登录成功',
+           })
+    except Exception as e:
+        # logging.info(e)
+        print(e)
+        return HttpResponseBadRequest()
+
+# Get     /home/getAllYoga                //返回全部的瑜伽列表
+def getAllYoga(request: HttpRequest):
+    print(request.body)
+    try:
+        return JsonResponse({
+            'state': '200',
+            'message': '获取瑜伽列表成功',
+           })
+    except Exception as e:
+        # logging.info(e)
+        print(e)
+        return HttpResponseBadRequest()
+
+# Post     /home/addYoga                //在后端管理页面上传新的瑜伽信息
+def addYoga(request: HttpRequest):
+    print(request.body)
+    try:
+        return JsonResponse({
+            'state': '200',
+            'message': '瑜伽信息上传成功',
+           })
+    except Exception as e:
+        # logging.info(e)
+        print(e)
+        return HttpResponseBadRequest()
+
+# Get     /home/getAllResult                //获取全部的结果比对图片
+def addYoga(request: HttpRequest):
+    print(request.body)
+    try:
+        return JsonResponse({
+            'state': '200',
+            'message': '获取全部结果比对信息成功',
+           })
+    except Exception as e:
+        # logging.info(e)
+        print(e)
+        return HttpResponseBadRequest()
 
 
 def picture(imagepath):
