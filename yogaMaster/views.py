@@ -189,7 +189,8 @@ def getFavorites(request: HttpRequest):
 
 #下均为未完成接口
 # Get     /usr/getAllUsr                //获取全部用户信息列表
-def getAllUsr():
+def getAllUsr(request: HttpRequest):
+    print(request.body)
     try:
         return JsonResponse({
             'state': '200',
