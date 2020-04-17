@@ -106,17 +106,7 @@ Python manage.py  runserver
 
 ### 后台管理网站接口设计
 
-1. Get    http://127.0.0.1:8000/usr/getUsrInfo  
-  //获取用户信息  
-  request:    {"usrid":"1"}  
-  Jsonresponse：  
-  {  
-    "state": "200",  
-    "message": "获取用户信息成功",  
-    "data": "[{\"model\": \"yogaMaster.user\", \"pk\": 1, \"fields\": {\"usrname\": \"yy\", \"password\": \"abc\", \"usrProfile\": \"yogaMaster/images/avater/2.jpg\"}}]"  
-  }
-
-2. Get    http://127.0.0.1:8000/usr/getStudyRecord  
+1. Get    http://127.0.0.1:8000/usr/getStudyRecord  
   //获取用户学习记录  
   request:
   {"usrid":"1"}  
@@ -165,15 +155,16 @@ Python manage.py  runserver
     "data": "[{\"model\": \"yogaMaster.yoga\", \"pk\": \"ayoga\", \"fields\": {\"level\": 1, \"video\": \"avideourl\"}}, {\"model\": \"yogaMaster.yoga\", \"pk\": \"byoga\", \"fields\": {\"level\": 1, \"video\": \"bvideourl\"}}]"  
   }  
 
-7. Get     http://127.0.0.1:8000/home/getYogaDetail          
-  //根据每个瑜伽动作文件名返回对应的图片  
-  request: {"yogaName":"ayoga"}   
+7. Get    http://127.0.0.1:8000/home/getYogaList                
+  //根据level返回对应的瑜伽列表（初中高代号123）  
+  request：{"level":"1"}  
   Jsonresponse：  
   {  
-  ​    "state": "200",  
-  ​    "message": "获取瑜伽图片列表成功",  
-  ​    "data": "http://127.0.0.1:8000/yogaMaster/images/yoga/2.jpg[/--sp--/]http://127.0.0.1:8000/yogaMaster/images/yoga/3.jpg[/--sp--/]http://127.0.0.1:8000/yogaMaster/images/yoga/4.jpg"  
-  }
+    "state": "200",  
+    "message": "获取瑜伽列表成功",  
+    "data": "[{\"model\": \"yogaMaster.yoga\", \"pk\": \"ayoga\", \"fields\": {\"level\": 1, \"video\": \"avideourl\"}}, {\"model\": \"yogaMaster.yoga\", \"pk\": \"byoga\", \"fields\": {\"level\": 1, \"video\": \"bvideourl\"}}]"  
+  }  
+
 
 8. (新增)  Post    http://127.0.0.1:8000/home/addYoga  
   //在后端管理页面上传新的瑜伽信息 
@@ -186,15 +177,6 @@ Python manage.py  runserver
   ​    "state": "200",  
   ​    "message": "瑜伽图信息上传成功" 
   }  
-
-9. (新增)  Get    http://127.0.0.1:8000/home/getAllResult  
-  //获取全部的结果比对图片  
-  Jsonresponse：  
-   {  
-  ​    "state": "200",  
-  ​    "message": "获取全部结果比对信息成功",  
-  ​    "data": "[{\"model\": \"yogaMaster.Result\", \"pk\": \"ayoga\", \"fields\": {\"level\": 1, \"video\": \"avideourl\"}}, {\"model\": \"yogaMaster.Result\", \"pk\": \"byoga\", \"fields\": {\"level\": 1, \"video\": \"bvideourl\"}}]"  
-  }
 
 
 ## 数据库设计
