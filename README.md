@@ -1,5 +1,12 @@
 # yogaMaster瑜伽大师（python+django+mysql）
 
+## 前端页面static
+用户信息：usrInfo.html  
+学习记录：usrStudyRecord.html  
+个人收藏：usrFav.html  
+瑜伽管理：yogaManagement.html  
+添加瑜伽姿势：addYoga.html
+
 ## 基础操作
 
 >1. 使用mysql数据库  
