@@ -33,7 +33,7 @@
 
                             <div class="field">
                                 <label>
-                                    Email or Username:
+                                    用户名:
                                 </label>
                                 <div class="ui fluid icon input">
                                     <input name="user_name" id="u_name" type="email" autocomplete="off" style="width:100%!important;min-width:100%;width:100%;">
@@ -42,7 +42,7 @@
                             </div>
                             <div class="field">
                                 <label>
-                                    Password:
+                                    密码:
                                 </label>
                                 <div class="ui fluid icon input">
                                     <input name="password" id="u_pass" type="password" autocomplete="off" style="width:100%!important;min-width:100%;width:100%;">
@@ -51,13 +51,13 @@
                             </div>
                             <div class="field">
 
-                                <a class="ui teal right labeled icon button fluid" href="index.html">
-                                    Login
+                                <a class="ui teal right labeled icon button fluid" onclick="login()">
+                                    登录
                                     <i class="icon sign in"></i>
                                 </a>
 
-                                <a class="ui blue right labeled icon button fluid" href="index.html">
-                                    Sign Up
+                                <a class="ui blue right labeled icon button fluid" href="login.html">
+                                    取消
                                     <i class="icon spy"></i>
                                 </a>
                             </div>
@@ -73,6 +73,16 @@
         var colors = ["#F25F5C", "#247BA0", "#8e44ad", "#ED6A5A", "#32936F", "#2c3e50", "#E83F6F", "#32936F", "#2E294E"];
         var rand = Math.floor(Math.random() * colors.length);
         $('body').css("background-color", colors[rand]);
+		function login(){
+			var username=document.getElementById("u_name");
+			var password=document.getElementById("u_pass");
+			
+			if((username.value=="admin")&&(password.value=="admin")){
+				 window.location.href="yogaManagement.html";
+			}else{
+				alert('用户名或密码错误，请重新输入！');
+			}
+		}
     </script>
 </body>
 </html>

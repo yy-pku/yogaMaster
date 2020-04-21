@@ -650,32 +650,33 @@
                                         <div class="two fields">
                                             <div class="field">
                                                 <label>瑜伽姿势名称</label>
-                                                <input placeholder="YogaName" name="YogaName" type="text">
+                                                <input placeholder="YogaName" id="yoganame" type="text">
                                             </div>
                                             <div class="field">
                                                 <label>所属等级</label>
                                                 <div class="ui dropdown selection" tabindex="0">
-                                                    <select name="YogaLevel">
+                                                    <select id="level">
                                                         <option value="">所属等级</option>
-                                                        <option value="primary-level">初级</option>
-                                                        <option value="middle-level">中级</option>
-														<option value="high-level">高级</option>
-                                                    </select><i class="dropdown icon"></i><div class="default text">YogaLevel</div>
-													<div class="menu" tabindex="-1"><div class="item" data-value="primary-level">初级</div>
-													<div class="item" data-value="middle-level">中级</div>
-													<div class="item" data-value="high-level">高级</div></div>
+                                                        <option value="1">初级</option>
+                                                        <option value="2">中级</option>
+														<option value="3">高级</option>
+                                                    </select>
+													<i class="dropdown icon"></i><div class="default text">YogaLevel</div>
+													<div class="menu" tabindex="-1"><div class="item" data-value="1">初级</div>
+													<div class="item" data-value="2">中级</div>
+													<div class="item" data-value="3">高级</div></div>
                                                 </div>
                                             </div>
                                         </div>
 										<div class="ui divider"></div>
 										<div class="field">
 										    <label>瑜伽姿势简单描述</label>
-											<textarea placeholder="YogaDesc" name="YogaDesc" cols="5"></textarea>										   
+											<textarea placeholder="YogaDescription" id="imgdescription" cols="5"></textarea>										   
 										</div>
 										
-										<div class="ui blue submit button">选择图片</div>											
-										<div class="ui blue submit button">Submit</div>										
-                                        <div class="ui error message"></div>
+										<input type="file" id="image">
+										<div class="ui divider"></div>
+										<div class="ui blue submit button" onclick="submit()">提交</div>	
                                     </form>
                                 </div>
                             </div>
@@ -702,6 +703,29 @@
     <script data-pace-options='{ "ajax": false }' src="plugins/pacejs/pace.js"></script>
     <script src="js/customjs/custom-validation.js"></script>
     <script src="js/main.js"></script>
-
+	<script>
+		var formData=new FormData();
+		formData.append("yoganame",document.getElementById("yoganame").value);
+		var options=$("#level option:selected");
+		formData.append("level",options.val());
+		formData.append("imgdescription",document.getElementById("imgdescription").value);
+		var file=document.getElementById("image");
+		file.onchange=function(){			
+			formData.append("image",file.files[0]);			
+		};
+		function submit(){
+			$.ajax({
+				url:"/home/addYoga",
+				type:"POST",
+				data:formData,
+				success:function(response){
+					alert("成功添加瑜伽姿势信息！");
+				},
+				error:function(e){
+					alert("添加失败！请重新添加！");
+				}
+			});
+		}
+	</script>
 </body>
 </html>

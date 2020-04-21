@@ -657,20 +657,20 @@
                                             <div class="divider"></div>
                                             <div class="header">
                                                 <i class="tags icon"></i>
-                                                Yoga Level
+                                                瑜伽等级
                                             </div>
                                             <div class="scrolling menu">
-                                                <div class="item">
+                                                <div class="item" onclick="getYogaList(1)">
                                                     <div class="ui red empty circular label"></div>
-                                                    primary-level
+                                                    初级
                                                 </div>
-                                                <div class="item">
+                                                <div class="item" onclick="getYogaList(2)">
                                                     <div class="ui blue empty circular label"></div>
-                                                    middle-level
+                                                    中级
                                                 </div>
-                                                <div class="item">
+                                                <div class="item" onclick="getYogaList(3)">
                                                     <div class="ui black empty circular label"></div>
-                                                    high-level
+                                                    高级
                                                 </div>
                                             </div>
                                         </div>
@@ -684,140 +684,7 @@
                                     </div>
 									
 									<div class="ui divider"></div>
-									<div class="ui equal width  padded grid stackable">
-                                    <div class="stretched row">
-                                        <div class="eight wide tablet four wide computer column">
-                                            <div class="ui segments">
-                                                <div class="ui segment">
-                                                    <h5 class="ui header">
-                                                        Buttocks
-                                                    </h5>
-                                                </div>
-                                                <div class="ui segment">
-                                                    <div class="ui fluid image">
-                                                        <svg width="150" height="120">
-                                                        	<image  xlink:href="img\yoga\primary\buttocks.jpg" x="0" y="0" width="100%" height="100%"></image>
-                                                        </svg>
-                                                    </div>
-                                        			
-                                                </div>
-                                            </div>
-                                        </div>
-										<div class="eight wide tablet four wide computer column">
-										    <div class="ui segments">
-										        <div class="ui segment">
-										            <h5 class="ui header">
-										                Crocodile
-										            </h5>
-										        </div>
-										        <div class="ui segment">
-										            <div class="ui fluid image">
-										                <svg width="150" height="120">
-										                	<image  xlink:href="img\yoga\primary\crocodile.jpg" x="0" y="0" width="100%" height="100%"></image>
-										                </svg>
-										            </div>
-										        </div>
-										    </div>
-										</div>
-										<div class="eight wide tablet four wide computer column">
-										    <div class="ui segments">
-										        <div class="ui segment">
-										            <h5 class="ui header">
-										                Door
-										            </h5>
-										        </div>
-										        <div class="ui fluid image">
-										            <svg width="150" height="120">
-										            	<image  xlink:href="img\yoga\primary\door.jpg" x="0" y="0" width="100%" height="100%"></image>
-										            </svg>
-										        </div>
-										    </div>
-										</div>
-										<div class="eight wide tablet four wide computer column">
-										    <div class="ui segments">
-										        <div class="ui segment">
-										            <h5 class="ui header">
-										                Down_dog
-										            </h5>
-										        </div>
-										        <div class="ui segment">
-										            <div class="ui fluid image">
-										                <svg width="150" height="120">
-										                	<image  xlink:href="img\yoga\primary\down_dog.jpg" x="0" y="0" width="100%" height="100%"></image>
-										                </svg>
-										            </div>
-										        </div>
-										    </div>
-										</div>
-										
-                                    </div>
-									<div class="stretched row">
-									
-									    <div class="eight wide tablet four wide computer column">
-									        <div class="ui segments">
-									            <div class="ui segment">
-									                <h5 class="ui header">
-									                    Forward _bending
-									                </h5>
-									            </div>
-									            <div class="ui segment">
-													<div class="ui fluid image">
-														<svg width="150" height="120">
-															<image  xlink:href="img\yoga\primary\forward _bending.jpg" x="0" y="0" width="100%" height="100%"></image>
-														</svg>
-													</div>
-									            </div>
-									        </div>
-									    </div>
-									    <div class="eight wide tablet four wide computer column">
-									        <div class="ui segments">
-									            <div class="ui segment">
-									                <h5 class="ui header">
-									                    Grinding
-									                </h5>
-									            </div>
-									            <div class="ui segment">
-									                <div class="ui fluid image">
-									                	<svg width="150" height="120">
-									                		<image  xlink:href="img\yoga\primary\grinding.jpg" x="0" y="0" width="100%" height="100%"></image>
-									                	</svg>
-									                </div>
-									            </div>
-									        </div>
-									    </div>
-									    <div class="eight wide tablet four wide computer column">
-									        <div class="ui segments">
-									            <div class="ui segment">
-									                <h5 class="ui header">
-									                    Low_bow_stance
-									                </h5>
-									            </div>
-									            <div class="ui segment">
-									                <div class="ui fluid image">
-									                	<svg width="150" height="120">
-									                		<image  xlink:href="img\yoga\primary\low_bow_stance.jpg" x="0" y="0" width="100%" height="100%"></image>
-									                	</svg>
-									                </div>
-									            </div>
-									        </div>
-									    </div>
-										<div class="eight wide tablet four wide computer column">
-										    <div class="ui segments">
-										        <div class="ui segment">
-										            <h5 class="ui header">
-										                Seat
-										            </h5>
-										        </div>
-										        <div class="ui segment">
-										            <div class="ui fluid image">
-										            	<svg width="150" height="120">
-										            		<image  xlink:href="img\yoga\primary\seat.jpg" x="0" y="0" width="100%" height="100%"></image>
-										            	</svg>
-										            </div>
-										        </div>
-										    </div>
-										</div>
-									</div>
+									<div class="ui equal width  padded grid stackable" id="imgbox">                                        
                                     </div>
                                 </div>
                             </div>
@@ -843,5 +710,6 @@
     <script data-pace-options='{ "ajax": false }' src="plugins/pacejs/pace.js"></script>
 
     <script src="js/main.js"></script>
+	<script src="js/yogaMagage.js"></script>
 </body>
 </html>
