@@ -1,5 +1,12 @@
 # yogaMaster瑜伽大师（python+django+mysql）
 
+## 前端页面static
+用户信息：usrInfo.html  
+学习记录：usrStudyRecord.html  
+个人收藏：usrFav.html  
+瑜伽管理：yogaManagement.html  
+添加瑜伽姿势：addYoga.html
+
 ## 基础操作
 
 >1. 使用mysql数据库  
@@ -26,6 +33,7 @@ Python manage.py  runserver
 ]   
 }
 
+### 小程序接口设计
 
 1. Get    http://127.0.0.1:8000/home/getYogaList                
   //根据level返回对应的瑜伽列表（初中高代号123）  
@@ -40,22 +48,16 @@ Python manage.py  runserver
 2. Get     http://127.0.0.1:8000/home/getYogaDetail          
   //根据每个瑜伽动作文件名返回对应的图片  
   request: {"yogaName":"ayoga"}   
-  Jsonresponse：
-
-  {
-
-  ​    "state": "200",
-
-  ​    "message": "获取瑜伽图片列表成功",
-
-  ​    "data": "http://127.0.0.1:8000/yogaMaster/images/yoga/2.jpg[/--sp--/]http://127.0.0.1:8000/yogaMaster/images/yoga/3.jpg[/--sp--/]http://127.0.0.1:8000/yogaMaster/images/yoga/4.jpg"
-
+  Jsonresponse：  
+  {  
+  ​    "state": "200",  
+  ​    "message": "获取瑜伽图片列表成功",  
+  ​    "data": "http://127.0.0.1:8000/yogaMaster/images/yoga/2.jpg[/--sp--/]http://127.0.0.1:8000/yogaMaster/images/yoga/3.jpg[/--sp--/]http://127.0.0.1:8000/yogaMaster/images/yoga/4.jpg"  
   }
 
 3. Get    http://127.0.0.1:8000/usr/getUsrInfo  
   //获取用户信息  
-  request:   
-  {"usrid":"1"}  
+  request:   {"usrid":"1"}  
   Jsonresponse：  
   {  
     "state": "200",  
@@ -68,11 +70,10 @@ Python manage.py  runserver
   request: {"userid":"1"}  
   HttpResponse(image_data, content_type="image/png")  
 
-5. post    http://127.0.0.1:8000/usr/register  
+5. Post    http://127.0.0.1:8000/usr/register  
   //注册  
   var form = new FormData();  
   form.append("usrProfile", fileInput.files[0], "/C:/Users/yang/Desktop/2.jpg");  
-  form.append("usrid", "1");  
   form.append("usrname", "yy");  
   form.append("password", "abc");  
   Jsonresponse：  
@@ -91,37 +92,99 @@ Python manage.py  runserver
 
 7. Get    http://127.0.0.1:8000/usr/getStudyRecord  
   //获取用户学习记录  
-
-  request:   
+  request:
   {"usrid":"1"}  
-  Jsonresponse：
-
-    {
-
-  ​    "state": "200",
-
-  ​    "message": "获取学习记录成功",
-
-  ​    "data": "http://127.0.0.1:8000/yogaMaster/images/result/a.jpg"
-
+  Jsonresponse：  
+   {  
+  ​    "state": "200",  
+  ​    "message": "获取学习记录成功",  
+  ​    "data": "http://127.0.0.1:8000/yogaMaster/images/result/a.jpg"  
   }
 
 8. Get    http://127.0.0.1:8000/usr/getFavorites  
-  //获取用户收藏
+  //获取用户收藏  
+  request:   {"usrid":"1"}  
+  Jsonresponse：  
+  {  
+  ​    "state": "200",  
+  ​    "message": "获取收藏列表成功",  
+  ​    "data": "http://127.0.0.1:8000/yogaMaster/images/yoga/1.jpg[/--sp--/]http://127.0.0.1:8000/yogaMaster/images/yoga/2.jpg[/--sp--/]http://127.0.0.1:8000/yogaMaster/images/yoga/3.jpg[/--sp--/]http://127.0.0.1:8000/yogaMaster/images/yoga/4.jpg"  
+  }
 
-  request:   
+### 后台管理网站接口设计
+
+1. Get    http://127.0.0.1:8000/usr/getStudyRecord  
+  //获取用户学习记录  
+  request:
   {"usrid":"1"}  
   Jsonresponse：  
-
-  {
-
-  ​    "state": "200",
-
-  ​    "message": "获取收藏列表成功",
-
-  ​    "data": "http://127.0.0.1:8000/yogaMaster/images/yoga/1.jpg[/--sp--/]http://127.0.0.1:8000/yogaMaster/images/yoga/2.jpg[/--sp--/]http://127.0.0.1:8000/yogaMaster/images/yoga/3.jpg[/--sp--/]http://127.0.0.1:8000/yogaMaster/images/yoga/4.jpg"
-
+   {  
+  ​    "state": "200",  
+  ​    "message": "获取学习记录成功",  
+  ​    "data": "http://127.0.0.1:8000/yogaMaster/images/result/a.jpg"  
   }
+
+3. Get    http://127.0.0.1:8000/usr/getFavorites  
+  //获取用户收藏  
+  request:   {"usrid":"1"}  
+  Jsonresponse：  
+  {  
+  ​    "state": "200",  
+  ​    "message": "获取收藏列表成功",  
+  ​    "data": "http://127.0.0.1:8000/yogaMaster/images/yoga/1.jpg[/--sp--/]http://127.0.0.1:8000/yogaMaster/images/yoga/2.jpg[/--sp--/]http://127.0.0.1:8000/yogaMaster/images/yoga/3.jpg[/--sp--/]http://127.0.0.1:8000/yogaMaster/images/yoga/4.jpg"  
+  }
+
+4. (新增) Get    http://127.0.0.1:8000/usr/getAllUsr  
+  //获取全部用户信息列表  
+  Jsonresponse：  
+  {  
+    "state": "200",  
+    "message": "获取全部用户信息成功",  
+    "data": "[{\"model\": \"yogaMaster.user\", \"pk\": 1, \"fields\": {\"usrname\": \"yy\", \"password\": \"abc\", \"usrProfile\": \"yogaMaster/images/avater/2.jpg\"}，{\"usrname\": \"yy1\", \"password\": \"abc\", \"usrProfile\": \"yogaMaster/images/avater/1.jpg\"}}]"  
+  }
+
+5. (新增)  Get    http://127.0.0.1:8000/usr/login  
+  //后台管理员登录，可写死用户名密码admin/admin  
+  request:   
+  {"usrname":"admin","password":"admin"}   
+  Jsonresponse：  
+   {  
+  ​    "state": "200",  
+  ​    "message": "登录成功"
+  }
+
+6. (新增) Get    http://127.0.0.1:8000/home/getAllYoga                
+  //返回全部的瑜伽列表  
+  Jsonresponse：  
+  {  
+    "state": "200",  
+    "message": "获取瑜伽列表成功",  
+    "data": "[{\"model\": \"yogaMaster.yoga\", \"pk\": \"ayoga\", \"fields\": {\"level\": 1, \"video\": \"avideourl\"}}, {\"model\": \"yogaMaster.yoga\", \"pk\": \"byoga\", \"fields\": {\"level\": 1, \"video\": \"bvideourl\"}}]"  
+  }  
+
+7. Get    http://127.0.0.1:8000/home/getYogaList                
+  //根据level返回对应的瑜伽列表（初中高代号123）  
+  request：{"level":"1"}  
+  Jsonresponse：  
+  {  
+    "state": "200",  
+    "message": "获取瑜伽列表成功",  
+    "data": "[{\"model\": \"yogaMaster.yoga\", \"pk\": \"ayoga\", \"fields\": {\"level\": 1, \"video\": \"avideourl\"}}, {\"model\": \"yogaMaster.yoga\", \"pk\": \"byoga\", \"fields\": {\"level\": 1, \"video\": \"bvideourl\"}}]"  
+  }  
+
+
+8. (新增)  Post    http://127.0.0.1:8000/home/addYoga  
+  //在后端管理页面上传新的瑜伽信息 
+  requset :  
+  var form = new FormData();  
+  form.append("imgid", "1");  
+  form.append("uploadimg", fileInput.files[0], "/C:/Users/yang/Desktop/3.png");  
+  Jsonresponse：  
+  {  
+  ​    "state": "200",  
+  ​    "message": "瑜伽图信息上传成功" 
+  }  
+
 
 ## 数据库设计
 

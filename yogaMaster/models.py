@@ -14,18 +14,12 @@ class User(models.Model):
     #
     # __str__=__repr__
 
-class Yoga(models.Model):
-    class Meta:
-        db_table='yoga'
-    level = models.IntegerField()
-    yogaName = models.CharField(max_length=48,primary_key='true')
-    video = models.URLField()
-
 class YogaImage(models.Model):
     class Meta:
         db_table='yogaImage'
     imgid = models.AutoField(primary_key='true')
-    yogaName = models.ForeignKey('yoga',on_delete=models.CASCADE)
+    yogaName = models.CharField(max_length=48)
+    level = models.IntegerField(default=1)
     imgDescription = models.CharField(max_length=255)
     image = models.ImageField(upload_to='yoga')
 

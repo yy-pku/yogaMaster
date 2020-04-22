@@ -14,16 +14,23 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.conf.urls.static import static
+from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path
-from yogaMaster.views import getUsrAvater,register,getFavorites,getStudyRecord,getUsrInfo,getResult,getYogaDetail,getYogaList,index
+from yogaMaster.views import getYogaByLevel,getYogaImg,getUsrAvater,getUsrInfo,register,getResult,getStudyRecord,getFavorites,getAllUsr,login,getAllYoga,addYoga,index
 from . import settings
 
+
+def getAllResult(args):
+    pass
+
+
 urlpatterns = [
+    url(r'^$', index),
     path('admin/', admin.site.urls),
-    path('index/', index),
-    path('home/getYogaList', getYogaList),
-    path('home/getYogaDetail', getYogaDetail),
+    #小程序接口
+    path('home/getYogaByLevel', getYogaByLevel),
+    path('home/getYogaImg', getYogaImg),
     path('home/getResult', getResult),
     path('usr/getUsrInfo', getUsrInfo),
     path('usr/getStudyRecord', getStudyRecord),
@@ -31,6 +38,11 @@ urlpatterns = [
     path('usr/register', register),
     path('usr/getUsrAvater', getUsrAvater),
 
+    #后端管理新增接口
+    path('home/getAllYoga', getAllYoga),
+    path('home/addYoga', addYoga),
+    path('usr/getAllUsr', getAllUsr),
+    path('usr/login', login),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
