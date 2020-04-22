@@ -7,6 +7,7 @@ from _pytest import logging
 from django.core import serializers
 from django.http import HttpRequest, HttpResponseBadRequest, JsonResponse, HttpResponse
 import simplejson
+from django.shortcuts import render
 from django.utils import timezone
 
 from yoga import settings
@@ -195,3 +196,6 @@ def picture(imagepath):
     with open(imagepath, 'rb') as f:
         image_data = f.read()
     return image_data
+
+def index(request):
+    return render(request,'index.html')

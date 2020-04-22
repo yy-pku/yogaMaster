@@ -16,11 +16,12 @@ Including another URLconf
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
-from yogaMaster.views import getUsrAvater,register,getFavorites,getStudyRecord,getUsrInfo,getResult,getYogaDetail,getYogaList
+from yogaMaster.views import getUsrAvater,register,getFavorites,getStudyRecord,getUsrInfo,getResult,getYogaDetail,getYogaList,index
 from . import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('index/', index),
     path('home/getYogaList', getYogaList),
     path('home/getYogaDetail', getYogaDetail),
     path('home/getResult', getResult),
