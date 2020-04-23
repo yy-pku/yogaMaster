@@ -7,22 +7,23 @@ from _pytest import logging
 from django.core import serializers
 from django.http import HttpRequest, HttpResponseBadRequest, JsonResponse, HttpResponse
 import simplejson
+from django.shortcuts import render
 from django.utils import timezone
 
 from yoga import settings
-from .models import User, Yoga, YogaImage, Result, StudyRecord, Favorites
+from .models import User, YogaImage, Result, StudyRecord, Favorites
 
 
 # Create your views here.
 
-# Get     /home/getYogaList                //根据level返回对应的瑜伽列表（初中高代号123）
-def getYogaList(request: HttpRequest):
+# Get     /home/getYogaByLevel                //根据level返回对应的瑜伽列表（初中高代号123）
+def getYogaByLevel(request: HttpRequest):
     print(request.body)
     try:
         payload = simplejson.loads(request.body)
         level = payload['level']
-        yogalist = Yoga.objects.filter(level=level)
-        print(yogalist)
+        yogalist = YogaImage.objects.filter(level=level)
+        # print(yogalist)
         return JsonResponse({
             'state': '200',
             'message': '获取瑜伽列表成功',
@@ -34,23 +35,17 @@ def getYogaList(request: HttpRequest):
         return HttpResponseBadRequest()
 
 
-# Get     /home/getYogaDetail           //根据每个瑜伽动作文件名返回对应的图片
-def getYogaDetail(request: HttpRequest):
+# Get     /home/getYogaImg           //根据每个瑜伽动作文件名返回对应的图片
+def getYogaImg(request: HttpRequest):
     print(request.body)
     try:
         urls=''
         payload = simplejson.loads(request.body)
         name = payload['yogaName']
-        yogaImglist = YogaImage.objects.filter(yogaName=name)
-        for var in yogaImglist:
-            print(str(var.image))
-            imagepath = os.path.join(settings.WEB_HOST_MEDIA_URL, "yogaMaster/images/{}".format(str(var.image)))
-            urls += imagepath+'[/--sp--/]'
-        return JsonResponse({
-            'state': '200',
-            'message': '获取瑜伽图片列表成功',
-            'data': urls[:len(urls) - len('[/--sp--/]')]
-        })
+        yogaImg = YogaImage.objects.get(yogaName=name)
+        imagepath = os.path.join("yogaMaster/images/{}".format(str(yogaImg.image)))
+        image_data = picture(imagepath)
+        return HttpResponse(image_data, content_type="image/png")
     except Exception as e:
         # logging.info(e)
         print(e)
@@ -145,7 +140,7 @@ def compareYoga(uploadimg: str, original: str):
 def getStudyRecord(request: HttpRequest):
     print(request.body)
     try:
-        urls=''
+        urls = ''
         payload = simplejson.loads(request.body)
         usrid = payload['usrid']
         result = StudyRecord.objects.filter(usrid=usrid)
@@ -168,7 +163,7 @@ def getStudyRecord(request: HttpRequest):
 def getFavorites(request: HttpRequest):
     print(request.body)
     try:
-        urls=''
+        urls = ''
         payload = simplejson.loads(request.body)
         usrid = payload['usrid']
         result = Favorites.objects.filter(usrid=usrid)
@@ -187,67 +182,74 @@ def getFavorites(request: HttpRequest):
         print(e)
         return HttpResponseBadRequest()
 
-#下均为未完成接口
+
+# 下均为未完成接口
 # Get     /usr/getAllUsr                //获取全部用户信息列表
 def getAllUsr(request: HttpRequest):
     print(request.body)
     try:
+        user = User.objects.all()
+        print(user)
         return JsonResponse({
             'state': '200',
             'message': '获取全部用户信息成功',
-           })
+            'data': serializers.serialize('json', user, ensure_ascii=False)
+        })
     except Exception as e:
         # logging.info(e)
         print(e)
         return HttpResponseBadRequest()
+
 
 # Get     /usr/login                //后台管理员登录，可写死用户名密码admin/admin
 def login(request: HttpRequest):
     print(request.body)
     try:
-        return JsonResponse({
-            'state': '200',
-            'message': '登录成功',
-           })
+        payload = simplejson.loads(request.body)
+        usrname = payload['usrname']
+        password = payload['password']
+        if usrname == 'admin' and password == 'admin':
+            return JsonResponse({
+                'state': '200',
+                'message': '登录成功',
+            })
     except Exception as e:
         # logging.info(e)
         print(e)
         return HttpResponseBadRequest()
 
-# Get     /home/getAllYoga                //返回全部的瑜伽列表
+
+# Get     /home/getAllYoga               //返回全部的瑜伽列表
 def getAllYoga(request: HttpRequest):
     print(request.body)
     try:
+        yoga = YogaImage.objects.all()
+        print(yoga)
         return JsonResponse({
             'state': '200',
             'message': '获取瑜伽列表成功',
-           })
+            'data': serializers.serialize('json', yoga, ensure_ascii=False)
+        })
     except Exception as e:
         # logging.info(e)
         print(e)
         return HttpResponseBadRequest()
 
-# Post     /home/addYoga                //在后端管理页面上传新的瑜伽信息
-def addYoga(request: HttpRequest):
-    print(request.body)
-    try:
-        return JsonResponse({
-            'state': '200',
-            'message': '瑜伽信息上传成功',
-           })
-    except Exception as e:
-        # logging.info(e)
-        print(e)
-        return HttpResponseBadRequest()
 
-# Get     /home/getAllResult                //获取全部的结果比对图片
+# Post     /home/addYoga               //在后端管理页面上传新的瑜伽信息
 def addYoga(request: HttpRequest):
     print(request.body)
     try:
+        yogaImg = YogaImage()
+        yogaImg.level = request.POST.get('level')
+        yogaImg.yogaName = request.POST.get('yogaName')
+        yogaImg.imgDescription = request.POST.get('imgDescription')
+        yogaImg.image = request.FILES.get('yogaImg')
+        yogaImg.save()
         return JsonResponse({
             'state': '200',
-            'message': '获取全部结果比对信息成功',
-           })
+            'message': '瑜伽图片上传成功',
+        })
     except Exception as e:
         # logging.info(e)
         print(e)
@@ -259,3 +261,6 @@ def picture(imagepath):
     with open(imagepath, 'rb') as f:
         image_data = f.read()
     return image_data
+
+def index(request):
+    return render(request, 'yogaManagement.html')

@@ -14,10 +14,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.conf.urls.static import static
+from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path
-from yogaMaster.views import getUsrAvater, register, getFavorites, getStudyRecord, getUsrInfo, getResult, getYogaDetail, \
-    getYogaList, getAllUsr, login, getAllYoga, addYoga
+from django.views.generic import TemplateView
+
+from yogaMaster.views import getYogaByLevel,getYogaImg,getUsrAvater,getUsrInfo,register,getResult,getStudyRecord,getFavorites,getAllUsr,login,getAllYoga,addYoga,index
 from . import settings
 
 
@@ -26,10 +28,11 @@ def getAllResult(args):
 
 
 urlpatterns = [
+    url(r'^$', TemplateView.as_view(template_name="yogaManagement.html")),
     path('admin/', admin.site.urls),
     #小程序接口
-    path('home/getYogaList', getYogaList),
-    path('home/getYogaDetail', getYogaDetail),
+    path('home/getYogaByLevel', getYogaByLevel),
+    path('home/getYogaImg', getYogaImg),
     path('home/getResult', getResult),
     path('usr/getUsrInfo', getUsrInfo),
     path('usr/getStudyRecord', getStudyRecord),
@@ -40,7 +43,6 @@ urlpatterns = [
     #后端管理新增接口
     path('home/getAllYoga', getAllYoga),
     path('home/addYoga', addYoga),
-    path('home/getAllResult', getAllResult),
     path('usr/getAllUsr', getAllUsr),
     path('usr/login', login),
 ]

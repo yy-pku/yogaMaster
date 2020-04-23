@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="3f36cebb-ad67-4315-a76b-5fc8500b0ebc" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yoga/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/yoga/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yogaMaster/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/yogaMaster/views.py" afterDir="false" />
+    </list>
+=======
     <list default="true" id="3f36cebb-ad67-4315-a76b-5fc8500b0ebc" name="Default Changelist" comment="" />
+>>>>>>> 71db47d7e305cbc13aacaa186175137dbd3f3c23
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,15 +46,19 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\github\yogaMaster\templates" />
       <recent name="D:\github\yogaMaster\yogaMaster\images\yoga" />
       <recent name="E:\PycharmProjects\yoga\yogaMaster\images\result" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\PycharmProjects\yoga\yogaMaster\images" />
+<<<<<<< HEAD
+=======
       <recent name="E:\PycharmProjects\yoga\yogaMaster\yogaMaster\images\upload" />
       <recent name="E:\PycharmProjects\yoga\yogaMaster\yogaMaster\images\avater" />
       <recent name="E:\PycharmProjects\yoga\yogaMaster" />
       <recent name="E:\PycharmProjects\yoga\yogaMaster\images\yogaMaster\images" />
+>>>>>>> 71db47d7e305cbc13aacaa186175137dbd3f3c23
     </key>
   </component>
   <component name="RunDashboard">
@@ -72,8 +84,35 @@
       <option name="presentableId" value="Default" />
       <updated>1580561285529</updated>
       <workItem from="1581488349205" duration="23506000" />
-      <workItem from="1581561781425" duration="14749000" />
+      <workItem from="1581561781425" duration="14970000" />
+      <workItem from="1581592355542" duration="4198000" />
+      <workItem from="1581665856910" duration="50000" />
+      <workItem from="1586877538712" duration="1744000" />
+      <workItem from="1586949165297" duration="987000" />
+      <workItem from="1587565990639" duration="335000" />
     </task>
+    <task id="LOCAL-00001" summary="更改图片前后端传递方式">
+      <created>1581584622264</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1581584622264</updated>
+    </task>
+    <task id="LOCAL-00002" summary="更改图片上传路径">
+      <created>1581595132165</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1581595132165</updated>
+    </task>
+    <task id="LOCAL-00003" summary="更改图片上传路径">
+      <created>1581595245856</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1581595245856</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -150,5 +189,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="更改图片前后端传递方式" />
+    <MESSAGE value="更改图片上传路径" />
+    <option name="LAST_COMMIT_MESSAGE" value="更改图片上传路径" />
   </component>
 </project>
