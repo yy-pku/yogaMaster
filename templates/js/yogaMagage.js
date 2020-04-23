@@ -13,11 +13,11 @@ window.onload = function () {
 	// });
 	
 	var imgdata=[
-		        {imageName:1,image:"img/yoga/primary/buttocks.jpg"},
-				{imageName:2,image:"img/yoga/primary/buttocks.jpg"},
-				{imageName:3,image:"img/yoga/primary/buttocks.jpg"},
-				{imageName:4,image:"img/yoga/primary/buttocks.jpg"},
-				{imageName:5,image:"img/yoga/primary/buttocks.jpg"},
+		        {imageName:1,image:"/static/img/yoga/primary/buttocks.jpg"},
+				{imageName:2,image:"/static/img/yoga/primary/buttocks.jpg"},
+				{imageName:3,image:"/static/img/yoga/primary/buttocks.jpg"},
+				{imageName:4,image:"/static/img/yoga/primary/buttocks.jpg"},
+				{imageName:5,image:"/static/img/yoga/primary/buttocks.jpg"},
 	        ];
 	var html="";
 	for(var i=0,len=imgdata.length;i<len;i++)
