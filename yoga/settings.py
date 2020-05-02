@@ -16,9 +16,9 @@ from django.utils.translation import gettext_lazy as _
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-MEDIA_URL = '/yogaMaster/images/'
+MEDIA_URL = '/images/'#MEDIA：指用户上传的文件,可变文件的文件夹
 MEDIA_ROOT = os.path.join(BASE_DIR, 'yogaMaster/images/')
-WEB_HOST_MEDIA_URL = 'http://127.0.0.1:8000/'
+WEB_HOST_MEDIA_URL = 'http://127.0.0.1:8000/images/'
 
 
 # Quick-start development settings - unsuitable for production
@@ -69,6 +69,10 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+
+            'libraries': {  # Adding this section should work around the issue.
+                'staticfiles': 'django.templatetags.static',
+            },
         },
     },
 ]
@@ -84,7 +88,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'yoga',
         'USER': 'root',
-        'PASSWORD':'123456',
+        'PASSWORD':'root',
         'HOST':'localhost',
         'PORT':'3306',
     }
@@ -131,7 +135,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/static/'#STATIC：主要指的是如css、js、jq、vue、图片等文件,运行中不会再变文件的文件夹（即不会删除或者新增）
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'templates/'),
 )

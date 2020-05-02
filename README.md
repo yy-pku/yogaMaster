@@ -35,7 +35,7 @@ Python manage.py  runserver
 
 ### 小程序接口设计
 
-1. Get    http://127.0.0.1:8000/home/getYogaList                
+1. Get    http://127.0.0.1:8000/home/getYogaByLevel                
   //根据level返回对应的瑜伽列表（初中高代号123）  
   request：{"level":"1"}  
   Jsonresponse：  
@@ -45,7 +45,7 @@ Python manage.py  runserver
     "data": "[{\"model\": \"yogaMaster.yoga\", \"pk\": \"ayoga\", \"fields\": {\"level\": 1, \"video\": \"avideourl\"}}, {\"model\": \"yogaMaster.yoga\", \"pk\": \"byoga\", \"fields\": {\"level\": 1, \"video\": \"bvideourl\"}}]"  
   }  
 
-2. Get     http://127.0.0.1:8000/home/getYogaDetail          
+2. Get     http://127.0.0.1:8000/home/getYogaImg          
   //根据每个瑜伽动作文件名返回对应的图片  
   request: {"yogaName":"ayoga"}   
   Jsonresponse：  
@@ -162,7 +162,7 @@ Python manage.py  runserver
     "data": "[{\"model\": \"yogaMaster.yoga\", \"pk\": \"ayoga\", \"fields\": {\"level\": 1, \"video\": \"avideourl\"}}, {\"model\": \"yogaMaster.yoga\", \"pk\": \"byoga\", \"fields\": {\"level\": 1, \"video\": \"bvideourl\"}}]"  
   }  
 
-7. Get    http://127.0.0.1:8000/home/getYogaList                
+7. Get    http://127.0.0.1:8000/home/getYogaByLevel                
   //根据level返回对应的瑜伽列表（初中高代号123）  
   request：{"level":"1"}  
   Jsonresponse：  
@@ -177,9 +177,12 @@ Python manage.py  runserver
   //在后端管理页面上传新的瑜伽信息 
   requset :  
   var form = new FormData();  
-  form.append("imgid", "1");  
-  form.append("uploadimg", fileInput.files[0], "/C:/Users/yang/Desktop/3.png");  
-  Jsonresponse：  
+  	formData.append("yogaName",document.getElementById("yoganame").value);  
+		var options=("#level option:selected");    
+    formData.append("level",options.val());  
+		formData.append("imgDescription",document.getElementById("imgdescription").value);  
+		formData.append("yogaImg",$('#image')[0].files[0]);  
+    Jsonresponse：  
   {  
   ​    "state": "200",  
   ​    "message": "瑜伽图信息上传成功" 
@@ -190,11 +193,9 @@ Python manage.py  runserver
 
 表名|属性
 -|-
-yoga|Level：int，瑜伽等级
--|yogaName：varchar，瑜伽名（pk）
--|video：varchar，瑜伽视频链接
 yogaimage|imgid：int，每个动作id（pk）
--|yogaName：varchar，瑜伽名（fk）
+-|yogaName：varchar，瑜伽名
+-|Level：int，瑜伽等级
 -|imgDescription：varchar，每个动作描述
 -|image：varchar，每个动作的图片文件路径
 user|usrid：int，用户id（pk）

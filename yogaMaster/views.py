@@ -16,7 +16,7 @@ from .models import User, YogaImage, Result, StudyRecord, Favorites
 
 # Create your views here.
 
-# Get     /home/getYogaByLevel                //根据level返回对应的瑜伽列表（初中高代号123）
+# Get    /home/getYogaByLevel                //根据level返回对应的瑜伽列表（初中高代号123）
 def getYogaByLevel(request: HttpRequest):
     print(request.body)
     try:
@@ -39,11 +39,10 @@ def getYogaByLevel(request: HttpRequest):
 def getYogaImg(request: HttpRequest):
     print(request.body)
     try:
-        urls=''
         payload = simplejson.loads(request.body)
         name = payload['yogaName']
         yogaImg = YogaImage.objects.get(yogaName=name)
-        imagepath = os.path.join("yogaMaster/images/{}".format(str(yogaImg.image)))
+        imagepath = os.path.join(settings.MEDIA_ROOT,str(yogaImg.image))
         image_data = picture(imagepath)
         return HttpResponse(image_data, content_type="image/png")
     except Exception as e:
@@ -61,7 +60,7 @@ def getUsrAvater(request: HttpRequest):
         user = User.objects.get(usrid=usrid)
         print(settings.BASE_DIR)
         print(user.usrProfile)
-        imagepath = os.path.join(settings.BASE_DIR, "yogaMaster/images/{}".format(str(user.usrProfile)))
+        imagepath = os.path.join(settings.MEDIA_ROOT, str(user.usrProfile))
         image_data = picture(imagepath)
         return HttpResponse(image_data, content_type="image/png")
     except Exception as e:
@@ -120,7 +119,7 @@ def getResult(request: HttpRequest):
         result.content = 'some difference'
         result.compareTime = timezone.now()
         result.save()
-        imagepath = os.path.join(settings.BASE_DIR, "yogaMaster/images/{}".format(str(result.compareImg)))
+        imagepath = os.path.join(settings.MEDIA_ROOT, str(result.compareImg))
         image_data = picture(imagepath)
         return HttpResponse(image_data, content_type="image/png")
     except Exception as e:
@@ -146,7 +145,7 @@ def getStudyRecord(request: HttpRequest):
         result = StudyRecord.objects.filter(usrid=usrid)
         for sr in result:
             res = Result.objects.get(resultId=sr.resultid.resultId)
-            imagepath = os.path.join(settings.WEB_HOST_MEDIA_URL, "yogaMaster/images/{}".format(str(res.compareImg)))
+            imagepath = os.path.join(settings.WEB_HOST_MEDIA_URL, str(res.compareImg))
             urls += imagepath + '[/--sp--/]'
         return JsonResponse({
             'state': '200',
@@ -170,7 +169,7 @@ def getFavorites(request: HttpRequest):
         for fa in result:
             res = YogaImage.objects.get(imgid=fa.imgid.imgid)
             print(res)
-            imagepath = os.path.join(settings.WEB_HOST_MEDIA_URL, "yogaMaster/images/{}".format(str(res.image)))
+            imagepath = os.path.join(settings.WEB_HOST_MEDIA_URL, str(res.image))
             urls += imagepath + '[/--sp--/]'
         return JsonResponse({
             'state': '200',
@@ -183,7 +182,6 @@ def getFavorites(request: HttpRequest):
         return HttpResponseBadRequest()
 
 
-# 下均为未完成接口
 # Get     /usr/getAllUsr                //获取全部用户信息列表
 def getAllUsr(request: HttpRequest):
     print(request.body)

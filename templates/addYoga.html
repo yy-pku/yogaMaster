@@ -124,8 +124,8 @@
                         </div>
                     </div>
                 </div>
+            </a>
         </div>
-        </a>
         <!--sidebar-->
         <div class="ui right sidebar">
             <div class="ui pointing secondary two item tabular menu">
@@ -676,16 +676,12 @@
 										
 										<input type="file" id="image">
 										<div class="ui divider"></div>
-										<div class="ui blue submit button" onclick="submit()">提交</div>	
+										<div class="ui blue submit button" onclick="addYoga()">提交</div>
                                     </form>
                                 </div>
                             </div>
                             
                         </div>
-
-                        
-
-
                     </div>
         </div>
         <!--maincontent-->
@@ -697,35 +693,12 @@
     <!--semantic-->
     <script src="/static/semantic/dist/semantic.min.js"></script>
     <!--semantic-->
-<script src="/static/plugins/cookie/js.cookie.js"></script>
+    <script src="/static/plugins/cookie/js.cookie.js"></script>
     <script src="/static/plugins/nicescrool/jquery.nicescroll.min.js"></script>
 
     <script data-pace-options='{ "ajax": false }' src="/static/plugins/pacejs/pace.js"></script>
     <script src="/static/js/customjs/custom-validation.js"></script>
     <script src="/static/js/main.js"></script>
-	<script>
-		var formData=new FormData();
-		formData.append("yoganame",document.getElementById("yoganame").value);
-		var options=$("#level option:selected");
-		formData.append("level",options.val());
-		formData.append("imgdescription",document.getElementById("imgdescription").value);
-		var file=document.getElementById("image");
-		file.onchange=function(){			
-			formData.append("image",file.files[0]);			
-		};
-		function submit(){
-			$.ajax({
-				url:"/home/addYoga",
-				type:"POST",
-				data:formData,
-				success:function(response){
-					alert("成功添加瑜伽姿势信息！");
-				},
-				error:function(e){
-					alert("添加失败！请重新添加！");
-				}
-			});
-		}
-	</script>
+	<script src="/static/js/addYoga.js"></script>
 </body>
 </html>
