@@ -6,7 +6,7 @@ class User(models.Model):
         db_table='user'
     usrid = models.AutoField(primary_key='true')
     usrname = models.CharField(max_length=48, null='false')
-    password = models.CharField(max_length=48, null='false')
+    password = models.CharField(max_length=48)
     usrProfile = models.ImageField(upload_to='avater')
 
     # def __repr__(self):

@@ -42,18 +42,17 @@ Python manage.py  runserver
   {  
     "state": "200",  
     "message": "获取瑜伽列表成功",  
-    "data": "[{\"model\": \"yogaMaster.yoga\", \"pk\": \"ayoga\", \"fields\": {\"level\": 1, \"video\": \"avideourl\"}}, {\"model\": \"yogaMaster.yoga\", \"pk\": \"byoga\", \"fields\": {\"level\": 1, \"video\": \"bvideourl\"}}]"  
-  }  
+    "data": "[{\"model\": \"yogaMaster.yogaimage\", \"pk\": 3, \"fields\": {\"yogaName\": \"半月式\", \"level\": 1, \"imgDescription\": \"nice\", \"image\": \"yoga/1.jpg\"}}, {\"model\": \"yogaMaster.yogaimage\", \"pk\": 4, \"fields\": {\"yogaName\": \"半月式\", \"level\": 1, \"imgDescription\": \"nice\", \"image\": \"yoga/2.jpg\"}}]"  
+   }  
 
 2. Get     http://127.0.0.1:8000/home/getYogaImg          
   //根据每个瑜伽动作文件名返回对应的图片  
   request: {"yogaName":"ayoga"}   
-  Jsonresponse：  
-  {  
-  ​    "state": "200",  
-  ​    "message": "获取瑜伽图片列表成功",  
-  ​    "data": "http://127.0.0.1:8000/yogaMaster/images/yoga/2.jpg[/--sp--/]http://127.0.0.1:8000/yogaMaster/images/yoga/3.jpg[/--sp--/]http://127.0.0.1:8000/yogaMaster/images/yoga/4.jpg"  
-  }
+  {
+    "state": "200",
+    "message": "获取瑜伽图片成功",
+    "data": "http://127.0.0.1:8000/images/yoga/1.jpg"
+   }
 
 3. Get    http://127.0.0.1:8000/usr/getUsrInfo  
   //获取用户信息  
@@ -63,32 +62,43 @@ Python manage.py  runserver
     "state": "200",  
     "message": "获取用户信息成功",  
     "data": "[{\"model\": \"yogaMaster.user\", \"pk\": 1, \"fields\": {\"usrname\": \"yy\", \"password\": \"abc\", \"usrProfile\": \"yogaMaster/images/avater/2.jpg\"}}]"  
-  }
+   }
 
 4. Get    http://127.0.0.1:8000/usr/getUsrAvater  
   //获取用户头像  
   request: {"userid":"1"}  
-  HttpResponse(image_data, content_type="image/png")  
+  {
+    "state": "200",
+    "message": "获取头像成功",
+    "data": "http://127.0.0.1:8000/images/avater/1.jpg"
+   }  
 
 5. Post    http://127.0.0.1:8000/usr/register  
   //注册  
   var form = new FormData();  
   form.append("usrProfile", fileInput.files[0], "/C:/Users/yang/Desktop/2.jpg");  
   form.append("usrname", "yy");  
-  form.append("password", "abc");  
   Jsonresponse：  
-  {  
-    "state": "200",  
-    "message": "注册成功"  
-  }
+  {
+    "state": "200",
+    "message": "登录成功",
+    "usrid": 1
+}
 
 6. Post    http://127.0.0.1:8000/home/getResult  
   //用户根据选中的姿势上传图片得到比较结果图片  
   requset :  
   var form = new FormData();  
   form.append("imgid", "1");  
+  form.append("usrid", "1");
   form.append("uploadimg", fileInput.files[0], "/C:/Users/yang/Desktop/3.png");  
-  HttpResponse(image_data, content_type="image/png")  
+  Jsonresponse：  
+  {
+    "state": "200",
+    "message": "获取结果图片成功",
+    "data": "http://127.0.0.1:8000/images/result/a.jpg",
+    "content": "some difference"
+  } 
 
 7. Get    http://127.0.0.1:8000/usr/getStudyRecord  
   //获取用户学习记录  
@@ -98,8 +108,8 @@ Python manage.py  runserver
    {  
   ​    "state": "200",  
   ​    "message": "获取学习记录成功",  
-  ​    "data": "http://127.0.0.1:8000/yogaMaster/images/result/a.jpg"  
-  }
+  ​    "data": "http://127.0.0.1:8000/yogaMaster/images/result/a.jpg,http://127.0.0.1:8000/yogaMaster/images/result/b.jpg"  
+   }
 
 8. Get    http://127.0.0.1:8000/usr/getFavorites  
   //获取用户收藏  
@@ -108,9 +118,39 @@ Python manage.py  runserver
   {  
   ​    "state": "200",  
   ​    "message": "获取收藏列表成功",  
-  ​    "data": "http://127.0.0.1:8000/yogaMaster/images/yoga/1.jpg[/--sp--/]http://127.0.0.1:8000/yogaMaster/images/yoga/2.jpg[/--sp--/]http://127.0.0.1:8000/yogaMaster/images/yoga/3.jpg[/--sp--/]http://127.0.0.1:8000/yogaMaster/images/yoga/4.jpg"  
-  }
+  ​    "data": "http://127.0.0.1:8000/yogaMaster/images/yoga/1.jpg,http://127.0.0.1:8000/yogaMaster/images/yoga/2.jpg,http://127.0.0.1:8000/yogaMaster/images/yoga/3.jpg,http://127.0.0.1:8000/yogaMaster/images/yoga/4.jpg"  
+   }
 
+9. Post http://127.0.0.1:8000/usr/addFavorites  
+  //添加收藏  
+  requset :  
+  var form = new FormData();    
+  form.append("imgid", "1");
+  form.append("usrid", "1");
+  JsonResponse{
+            'state': '200',
+            'message': '收藏成功'
+  }
+  
+10. Post http://127.0.0.1:8000/usr/addFavorites  
+  //取消收藏  
+  requset :  
+  var form = new FormData();    
+  form.append("imgid", "1");
+  form.append("usrid", "1");
+  JsonResponse{
+            'state': '200',
+            'message': '取消收藏成功'
+  } 
+11. Get http://127.0.0.1:8000/usr/addFavorites  
+  //取消所有收藏  
+  requset :  
+  {"usrid":"1"} 
+  JsonResponse{
+            'state': '200',
+            'message': '取消所有收藏成功'
+  }
+        
 ### 后台管理网站接口设计
 
 1. Get    http://127.0.0.1:8000/usr/getStudyRecord  
@@ -121,7 +161,7 @@ Python manage.py  runserver
    {  
   ​    "state": "200",  
   ​    "message": "获取学习记录成功",  
-  ​    "data": "http://127.0.0.1:8000/yogaMaster/images/result/a.jpg"  
+  ​    "data": "http://127.0.0.1:8000/yogaMaster/images/result/a.jpg,http://127.0.0.1:8000/yogaMaster/images/yoga/2.jpg"  
   }
 
 3. Get    http://127.0.0.1:8000/usr/getFavorites  
@@ -131,7 +171,7 @@ Python manage.py  runserver
   {  
   ​    "state": "200",  
   ​    "message": "获取收藏列表成功",  
-  ​    "data": "http://127.0.0.1:8000/yogaMaster/images/yoga/1.jpg[/--sp--/]http://127.0.0.1:8000/yogaMaster/images/yoga/2.jpg[/--sp--/]http://127.0.0.1:8000/yogaMaster/images/yoga/3.jpg[/--sp--/]http://127.0.0.1:8000/yogaMaster/images/yoga/4.jpg"  
+  ​    "data": "http://127.0.0.1:8000/yogaMaster/images/yoga/1.jpg,http://127.0.0.1:8000/yogaMaster/images/yoga/2.jpg,http://127.0.0.1:8000/yogaMaster/images/yoga/3.jpg,http://127.0.0.1:8000/yogaMaster/images/yoga/4.jpg"  
   }
 
 4. (新增) Get    http://127.0.0.1:8000/usr/getAllUsr  
@@ -140,7 +180,7 @@ Python manage.py  runserver
   {  
     "state": "200",  
     "message": "获取全部用户信息成功",  
-    "data": "[{\"model\": \"yogaMaster.user\", \"pk\": 1, \"fields\": {\"usrname\": \"yy\", \"password\": \"abc\", \"usrProfile\": \"yogaMaster/images/avater/2.jpg\"}，{\"usrname\": \"yy1\", \"password\": \"abc\", \"usrProfile\": \"yogaMaster/images/avater/1.jpg\"}}]"  
+    "data": "[{\"model\": \"yogaMaster.user\", \"pk\": 1, \"fields\": {\"usrname\": \"yy\", \"password\": \"abc\", \"usrProfile\": \"avater/2.jpg\"}，{\"usrname\": \"yy1\", \"password\": \"abc\", \"usrProfile\": \"avater/1.jpg\"}}]"  
   }
 
 5. (新增)  Get    http://127.0.0.1:8000/usr/login  
@@ -151,7 +191,7 @@ Python manage.py  runserver
    {  
   ​    "state": "200",  
   ​    "message": "登录成功"
-  }
+   }
 
 6. (新增) Get    http://127.0.0.1:8000/home/getAllYoga                
   //返回全部的瑜伽列表  
@@ -160,7 +200,7 @@ Python manage.py  runserver
     "state": "200",  
     "message": "获取瑜伽列表成功",  
     "data": "[{\"model\": \"yogaMaster.yoga\", \"pk\": \"ayoga\", \"fields\": {\"level\": 1, \"video\": \"avideourl\"}}, {\"model\": \"yogaMaster.yoga\", \"pk\": \"byoga\", \"fields\": {\"level\": 1, \"video\": \"bvideourl\"}}]"  
-  }  
+   }  
 
 7. Get    http://127.0.0.1:8000/home/getYogaByLevel                
   //根据level返回对应的瑜伽列表（初中高代号123）  
@@ -169,8 +209,8 @@ Python manage.py  runserver
   {  
     "state": "200",  
     "message": "获取瑜伽列表成功",  
-    "data": "[{\"model\": \"yogaMaster.yoga\", \"pk\": \"ayoga\", \"fields\": {\"level\": 1, \"video\": \"avideourl\"}}, {\"model\": \"yogaMaster.yoga\", \"pk\": \"byoga\", \"fields\": {\"level\": 1, \"video\": \"bvideourl\"}}]"  
-  }  
+    "data": "[{\"model\": \"yogaMaster.yogaimage\", \"pk\": 3, \"fields\": {\"yogaName\": \"半月式\", \"level\": 1, \"imgDescription\": \"nice\", \"image\": \"yoga/1.jpg\"}}, {\"model\": \"yogaMaster.yogaimage\", \"pk\": 9, \"fields\": {\"yogaName\": \"仰卧式\", \"level\": 3, \"imgDescription\": \"1ge\", \"image\": \"yoga/door.jpg\"}}]"  
+   }  
 
 
 8. (新增)  Post    http://127.0.0.1:8000/home/addYoga  
@@ -185,8 +225,8 @@ Python manage.py  runserver
     Jsonresponse：  
   {  
   ​    "state": "200",  
-  ​    "message": "瑜伽图信息上传成功" 
-  }  
+  ​    "message": "瑜伽图片上传成功" 
+   }  
 
 
 ## 数据库设计
