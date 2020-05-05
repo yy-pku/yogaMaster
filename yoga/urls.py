@@ -20,7 +20,7 @@ from django.urls import path
 from django.views.generic import TemplateView
 
 from yogaMaster.views import getYogaByLevel, getYogaImg, getUsrAvater, getUsrInfo, register, getResult, getStudyRecord, \
-    getFavorites, getAllUsr, login, getAllYoga, addYoga, addFavorites, delFavorites, delAllFavorites
+    getFavorites, getAllUsr, login, getAllYoga, addYoga, addFavorites, delFavorites, delAllFavorites, ifFavorites
 from . import settings
 
 
@@ -40,6 +40,7 @@ urlpatterns = [
     path('usr/getFavorites', getFavorites),
     path('usr/addFavorites', addFavorites),
     path('usr/delFavorites', delFavorites),
+    path('usr/ifFavorite', ifFavorites),
     path('usr/delAllFavorites', delAllFavorites),
     path('usr/register', register),
     path('usr/getUsrAvater', getUsrAvater),

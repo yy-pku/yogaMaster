@@ -102,7 +102,7 @@ def register(request: HttpRequest):
         user.password = request.POST.get('password')
         user.usrProfile = request.FILES.get('usrProfile')
         res = User.objects.filter(usrname=user.usrname)
-        if res.count()==0:
+        if res.count() == 0:
             user.save()
         res = User.objects.get(usrname=user.usrname).usrid
         return JsonResponse({
@@ -129,7 +129,7 @@ def getResult(request: HttpRequest):
         result.content = 'some difference'
         result.compareTime = timezone.now()
         result.save()
-        studyRecord=StudyRecord()
+        studyRecord = StudyRecord()
         studyRecord.resultid = result
         studyRecord.usrid = User.objects.get(usrid=usrid)
         studyRecord.save()
@@ -138,7 +138,7 @@ def getResult(request: HttpRequest):
             'state': '200',
             'message': '获取结果图片成功',
             'data': imagepath,
-            'content':result.content
+            'content': result.content
         })
     except Exception as e:
         # logging.info(e)
@@ -201,7 +201,6 @@ def addFavorites(request: HttpRequest):
 def delFavorites(request: HttpRequest):
     print(request.body)
     try:
-        favorites = Favorites()
         imgid = request.POST.get('imgid')
         usrid = request.POST.get('usrid')
         favorites = Favorites.objects.filter(imgid=imgid).filter(usrid=usrid)
@@ -215,6 +214,7 @@ def delFavorites(request: HttpRequest):
         # logging.info(e)
         print(e)
         return HttpResponseBadRequest()
+
 
 # Get    /usr/delAllFavorites                     //取消用户所有收藏
 def delAllFavorites(request: HttpRequest):
@@ -251,6 +251,32 @@ def getFavorites(request: HttpRequest):
             'message': '获取收藏列表成功',
             'data': urls[:len(urls) - len(',')]
         })
+    except Exception as e:
+        # logging.info(e)
+        print(e)
+        return HttpResponseBadRequest()
+
+
+# Post    /usr/ifFavorite                     //判断用户是否收藏
+def ifFavorites(request: HttpRequest):
+    print(request.body)
+    try:
+        imgid = request.POST.get('imgid')
+        usrid = request.POST.get('usrid')
+        favorites = Favorites.objects.filter(imgid=imgid).filter(usrid=usrid)
+        print(favorites)
+        if favorites.count() == 0:
+            return JsonResponse({
+                'state': '200',
+                'message': '查询收藏成功',
+                'data': '0'
+            })
+        else:
+            return JsonResponse({
+                'state': '200',
+                'message': '查询收藏成功',
+                'data': '1'
+            })
     except Exception as e:
         # logging.info(e)
         print(e)
