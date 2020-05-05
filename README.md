@@ -132,7 +132,7 @@ Python manage.py  runserver
             'message': '收藏成功'
   }
   
-10. Post http://127.0.0.1:8000/usr/addFavorites  
+10. Post http://127.0.0.1:8000/usr/delFavorites  
   //取消收藏  
   requset :  
   var form = new FormData();    
@@ -142,13 +142,26 @@ Python manage.py  runserver
             'state': '200',
             'message': '取消收藏成功'
   } 
-11. Get http://127.0.0.1:8000/usr/addFavorites  
+11. Get http://127.0.0.1:8000/usr/delAllFavorites  
   //取消所有收藏  
   requset :  
   {"usrid":"1"} 
   JsonResponse{
             'state': '200',
             'message': '取消所有收藏成功'
+  }
+  
+  11. Get http://127.0.0.1:8000/usr/ifFavorite  
+  //判断是否收藏  
+  requset :  
+  var form = new FormData();    
+  form.append("imgid", "1");
+  form.append("usrid", "1");
+  JsonResponse
+  {
+    "state": "200",
+    "message": "查询收藏成功",
+    "data": "1"
   }
         
 ### 后台管理网站接口设计
