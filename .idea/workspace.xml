@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fe04b7c6-ef0b-4447-95ca-df6fafed9f30" name="Default Changelist" comment="">
+
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yoga/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/yoga/urls.py" afterDir="false" />
@@ -17,10 +18,6 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1awIBHYra9Eb2ONZa38xxTRP420" />
-  <component name="PropertiesComponent">
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
-  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -43,25 +40,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1587640093970</updated>
-      <workItem from="1588417085315" duration="718000" />
-      <workItem from="1588511937832" duration="4440000" />
-      <workItem from="1588564222117" duration="15159000" />
-      <workItem from="1588601834238" duration="611000" />
-      <workItem from="1588647458113" duration="1587000" />
     </task>
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
