@@ -402,8 +402,8 @@
                     </div>
                 </div>
             </div>
-    </div>
     </a>
+    </div>
     <!--sidebar-->
     <div class="ui right sidebar">
         <div class="ui pointing secondary two item tabular menu">
@@ -919,17 +919,10 @@
                         <div class="ui items">
                             <div class="item">
                                 <a class="ui small circular image">
-                                    <img src="/static/img/avatar/people/Meggie.png" alt="label-image" />
+                                    <img src="/static/img/avatar/people/Meggie.png" alt="label-image" id="avatar"/>
                                     <i class="circle mini red icon avt" data-content="Offline" data-variation="inverted redli"></i>
                                 </a>
-                                <div class="middle aligned content hiddenui">
-                                    <div class="header">
-                                        <i class="like icon"></i>
-                                        我
-                                    </div>
-                                    <div class="meta">
-                                        学生, <i class="icon map marker"></i> London U.K.
-                                    </div>
+                                <div class="middle aligned content hiddenui" id="usrbox">
                                 </div>
                             </div>
                         </div>
@@ -952,7 +945,7 @@
                                 <i class="instagram icon"></i>
                             </button>
                             <div class="ui divider"></div>
-                            <button class="ui inverted black button follow">Follow</button>
+                            <button class="ui inverted black button follow" onclick="nextuser()">next user</button>
                         </div>
                     </div>
                 </div>
@@ -962,335 +955,11 @@
                     <a class="item active red">个人收藏</a>
                     <a class="item">其他</a>
 
-                    <div class="right menu">
-                        <a class="item">
-                            <div class="ui mini statistic">
-                                <div class="value">
-                                    1.6k
-                                </div>
-                                <div class="label">
-                                    Followers
-                                </div>
-                            </div>
-                        </a>
-                        <a class="item">
-                            <div class="ui mini statistic">
-                                <div class="value">
-                                    102
-                                </div>
-                                <div class="label">
-                                    Following
-                                </div>
-                            </div>
-                        </a>
-                        <a class="item">
-                            <div class="ui mini statistic">
-                                <div class="value">
-                                    206
-                                </div>
-                                <div class="label">
-                                    Activities
-                                </div>
-                            </div>
-                        </a>
-                    </div>
                 </div>
                 <div class="row">
                     <div class="column">
                         <div class="ui segment">
-                            <div class="ui five stackable cards">
-                                <div class="ui card">
-                                    <div class="eight wide tablet four wide computer column">
-                                        <div class="ui fluid image">
-                                        <svg width="150" height="120">
-                                            <image  xlink:href="/static/img\yoga\primary\buttocks.jpg" x="0" y="0" width="100%" height="100%"></image>
-                                        </svg>
-                                    </div>
-                                    </div>
-                                    <div class="content">
-                                        <a class="header" href="/static/img\yoga\primary\buttocks.jpg">buttocks</a>
-                                        <div class="meta">
-                                            <span class="date">liked in 2011</span>
-                                        </div>
-                                        <div class="description">
-                                           简述
-                                        </div>
-                                    </div>
-                                    <div class="extra content">
-                                        <div class="ui left labeled button" tabindex="0">
-                                            <a class="ui basic right pointing label">
-                                                3,641
-                                            </a>
-                                            <div class="ui button">
-                                                <i class="star icon active yellow"></i> Favorite
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="ui card">
-                                    <div class="eight wide tablet four wide computer column">
-                                        <div class="ui fluid image">
-                                            <svg width="150" height="120">
-                                                <image  xlink:href="/static/img\yoga\primary\door.jpg" x="0" y="0" width="100%" height="100%"></image>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <div class="content">
-                                        <a class="header" href="/static/img\yoga\primary\door.jpg">door</a>
-                                        <div class="meta">
-                                            <span class="date">liked in 2011</span>
-                                        </div>
-                                        <div class="description">
-                                            简述
-                                        </div>
-                                    </div>
-                                    <div class="extra content">
-                                        <div class="ui left labeled button" tabindex="0">
-                                            <a class="ui basic right pointing label">
-                                                3,641
-                                            </a>
-                                            <div class="ui button">
-                                                <i class="star icon active yellow"></i> Favorite
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="ui card">
-                                    <div class="eight wide tablet four wide computer column">
-                                        <div class="ui fluid image">
-                                            <svg width="150" height="120">
-                                                <image  xlink:href="/static/img\yoga\primary\seat.jpg" x="0" y="0" width="100%" height="100%"></image>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <div class="content">
-                                        <a class="header" href="/static/img\yoga\primary\seat.jpg">buttocks</a>
-                                        <div class="meta">
-                                            <span class="date">liked in 2011</span>
-                                        </div>
-                                        <div class="description">
-                                            简述
-                                        </div>
-                                    </div>
-                                    <div class="extra content">
-                                        <div class="ui left labeled button" tabindex="0">
-                                            <a class="ui basic right pointing label">
-                                                3,641
-                                            </a>
-                                            <div class="ui button">
-                                                <i class="star icon active yellow"></i> Favorite
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="ui card">
-                                    <div class="eight wide tablet four wide computer column">
-                                        <div class="ui fluid image">
-                                            <svg width="150" height="120">
-                                                <image  xlink:href="/static/img\yoga\primary\seat.jpg" x="0" y="0" width="100%" height="100%"></image>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <div class="content">
-                                        <a class="header" href="/static/img\yoga\primary\buttocks.jpg">buttocks</a>
-                                        <div class="meta">
-                                            <span class="date">liked in 2011</span>
-                                        </div>
-                                        <div class="description">
-                                            简述
-                                        </div>
-                                    </div>
-                                    <div class="extra content">
-                                        <div class="ui left labeled button" tabindex="0">
-                                            <a class="ui basic right pointing label">
-                                                3,641
-                                            </a>
-                                            <div class="ui button">
-                                                <i class="star icon active yellow"></i> Favorite
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="ui card">
-                                    <div class="eight wide tablet four wide computer column">
-                                        <div class="ui fluid image">
-                                            <svg width="150" height="120">
-                                                <image  xlink:href="/static/img\yoga\primary\down_dog.jpg" x="0" y="0" width="100%" height="100%"></image>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <div class="content">
-                                        <a class="header" href="/static/img\yoga\primary\down_dog.jpg">buttocks</a>
-                                        <div class="meta">
-                                            <span class="date">liked in 2011</span>
-                                        </div>
-                                        <div class="description">
-                                            简述
-                                        </div>
-                                    </div>
-                                    <div class="extra content">
-                                        <div class="ui left labeled button" tabindex="0">
-                                            <a class="ui basic right pointing label">
-                                                3,641
-                                            </a>
-                                            <div class="ui button">
-                                                <i class="star icon active yellow"></i> Favorite
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ui five stackable cards">
-                                <div class="ui card">
-                                    <div class="eight wide tablet four wide computer column">
-                                        <div class="ui fluid image">
-                                            <svg width="150" height="120">
-                                                <image  xlink:href="/static/img\yoga\primary\seat.jpg" x="0" y="0" width="100%" height="100%"></image>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <div class="content">
-                                        <a class="header" href="/static/img\yoga\primary\buttocks.jpg">buttocks</a>
-                                        <div class="meta">
-                                            <span class="date">liked in 2011</span>
-                                        </div>
-                                        <div class="description">
-                                            简述
-                                        </div>
-                                    </div>
-                                    <div class="extra content">
-                                        <div class="ui left labeled button" tabindex="0">
-                                            <a class="ui basic right pointing label">
-                                                3,641
-                                            </a>
-                                            <div class="ui button">
-                                                <i class="star icon active yellow"></i> Favorite
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="ui card">
-                                    <div class="eight wide tablet four wide computer column">
-                                        <div class="ui fluid image">
-                                            <svg width="150" height="120">
-                                                <image  xlink:href="/static/img\yoga\primary\seat.jpg" x="0" y="0" width="100%" height="100%"></image>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <div class="content">
-                                        <a class="header" href="/static/img\yoga\primary\buttocks.jpg">buttocks</a>
-                                        <div class="meta">
-                                            <span class="date">liked in 2011</span>
-                                        </div>
-                                        <div class="description">
-                                            简述
-                                        </div>
-                                    </div>
-                                    <div class="extra content">
-                                        <div class="ui left labeled button" tabindex="0">
-                                            <a class="ui basic right pointing label">
-                                                3,641
-                                            </a>
-                                            <div class="ui button">
-                                                <i class="star icon active yellow"></i> Favorite
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="ui card">
-                                    <div class="eight wide tablet four wide computer column">
-                                        <div class="ui fluid image">
-                                            <svg width="150" height="120">
-                                                <image  xlink:href="/static/img\yoga\primary\buttocks.jpg" x="0" y="0" width="100%" height="100%"></image>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <div class="content">
-                                        <a class="header" href="/static/img\yoga\primary\buttocks.jpg">buttocks</a>
-                                        <div class="meta">
-                                            <span class="date">liked in 2011</span>
-                                        </div>
-                                        <div class="description">
-                                            简述
-                                        </div>
-                                    </div>
-                                    <div class="extra content">
-                                        <div class="ui left labeled button" tabindex="0">
-                                            <a class="ui basic right pointing label">
-                                                3,641
-                                            </a>
-                                            <div class="ui button">
-                                                <i class="star icon active yellow"></i> Favorite
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="ui card">
-                                    <div class="eight wide tablet four wide computer column">
-                                        <div class="ui fluid image">
-                                            <svg width="150" height="120">
-                                                <image  xlink:href="/static/img\yoga\primary\door.jpg" x="0" y="0" width="100%" height="100%"></image>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <div class="content">
-                                        <a class="header" href="/static/img\yoga\primary\door.jpg">door</a>
-                                        <div class="meta">
-                                            <span class="date">liked in 2011</span>
-                                        </div>
-                                        <div class="description">
-                                            简述
-                                        </div>
-                                    </div>
-                                    <div class="extra content">
-                                        <div class="ui left labeled button" tabindex="0">
-                                            <a class="ui basic right pointing label">
-                                                3,641
-                                            </a>
-                                            <div class="ui button">
-                                                <i class="star icon active yellow"></i> Favorite
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="ui card">
-                                    <div class="eight wide tablet four wide computer column">
-                                        <div class="ui fluid image">
-                                            <svg width="150" height="120">
-                                                <image  xlink:href="/static/img\yoga\primary\seat.jpg" x="0" y="0" width="100%" height="100%"></image>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <div class="content">
-                                        <a class="header" href="/static/img\yoga\primary\seat.jpg">buttocks</a>
-                                        <div class="meta">
-                                            <span class="date">liked in 2011</span>
-                                        </div>
-                                        <div class="description">
-                                            简述
-                                        </div>
-                                    </div>
-                                    <div class="extra content">
-                                        <div class="ui left labeled button" tabindex="0">
-                                            <a class="ui basic right pointing label">
-                                                3,641
-                                            </a>
-                                            <div class="ui button">
-                                                <i class="star icon active yellow"></i> Favorite
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
+                            <div class="ui four stackable cards" id="imgbox">
                             </div>
                         </div>
                     </div>
@@ -1313,5 +982,6 @@
 <script data-pace-options='{ "ajax": false }' src="/static/plugins/pacejs/pace.js"></script>
 
 <script src="/static/js/main.js"></script>
+<script src="/static/js/usrFav.js"></script>
 </body>
 </html>

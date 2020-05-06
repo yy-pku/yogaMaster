@@ -19,4 +19,5 @@ function addYoga(){
                 alert("添加失败！请重新添加！");
             }
         });
+
 }

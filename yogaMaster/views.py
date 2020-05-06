@@ -7,10 +7,10 @@ from _pytest import logging
 from django.core import serializers
 from django.http import HttpRequest, HttpResponseBadRequest, JsonResponse, HttpResponse
 import simplejson
-from django.shortcuts import render
 from django.utils import timezone
 
 from yoga import settings
+from yoga.settings import WEB_HOST_MEDIA_URL
 from .models import User, YogaImage, Result, StudyRecord, Favorites
 
 
@@ -22,12 +22,14 @@ def getYogaByLevel(request: HttpRequest):
     try:
         payload = simplejson.loads(request.body)
         level = payload['level']
-        yogalist = YogaImage.objects.filter(level=level)
-        # print(yogalist)
+        yogalist = list(YogaImage.objects.values().filter(level=level))
+        print(yogalist)
+        for yogaimg in yogalist:
+            yogaimg['image'] = os.path.join(WEB_HOST_MEDIA_URL, str(yogaimg['image']))
         return JsonResponse({
             'state': '200',
             'message': '获取瑜伽列表成功',
-            'data': serializers.serialize('json', yogalist, ensure_ascii=False)
+            'data': yogalist
         })
     except Exception as e:
         # logging.info(e)
@@ -41,8 +43,10 @@ def getYogaImg(request: HttpRequest):
     try:
         payload = simplejson.loads(request.body)
         name = payload['yogaName']
+        print(name)
         yogaImg = YogaImage.objects.get(yogaName=name)
-        imagepath = os.path.join(settings.WEB_HOST_MEDIA_URL, str(yogaImg.image))
+        imagepath = os.path.join(WEB_HOST_MEDIA_URL, str(yogaImg.image))
+        print(imagepath)
         return JsonResponse({
             'state': '200',
             'message': '获取瑜伽图片成功',
@@ -63,7 +67,7 @@ def getUsrAvater(request: HttpRequest):
         user = User.objects.get(usrid=usrid)
         print(settings.BASE_DIR)
         print(user.usrProfile)
-        imagepath = os.path.join(settings.WEB_HOST_MEDIA_URL, str(user.usrProfile))
+        imagepath = os.path.join(WEB_HOST_MEDIA_URL, str(user.usrProfile))
         return JsonResponse({
             'state': '200',
             'message': '获取头像成功',
@@ -81,12 +85,12 @@ def getUsrInfo(request: HttpRequest):
     try:
         payload = simplejson.loads(request.body)
         usrid = payload['usrid']
-        user = User.objects.filter(usrid=usrid)
+        user = list(User.objects.values().filter(usrid=usrid))
         print(user)
         return JsonResponse({
             'state': '200',
             'message': '获取用户信息成功',
-            'data': serializers.serialize('json', user, ensure_ascii=False)
+            'data': user
         })
     except Exception as e:
         # logging.info(e)
@@ -97,18 +101,27 @@ def getUsrInfo(request: HttpRequest):
 # post    /usr/register    //用户注册
 def register(request: HttpRequest):
     try:
-        user = User()
-        user.usrname = request.POST.get('usrname')
-        user.password = request.POST.get('password')
-        user.usrProfile = request.FILES.get('usrProfile')
-        res = User.objects.filter(usrname=user.usrname)
+        print(request.body)
+        payload = simplejson.loads(request.body)
+        nickname = payload['nickName']
+        print(nickname)
+        res = User.objects.filter(nickname=nickname)
         if res.count() == 0:
+            user = User()
+            user.nickname = nickname
+            user.avatarUrl = payload['avatarUrl']
+            user.city = payload['city']
+            user.country = payload['country']
+            user.gender = payload['gender']
+            user.language = payload['language']
+            user.province = payload['province']
+            user.lastLoginTime = timezone.now()
             user.save()
-        res = User.objects.get(usrname=user.usrname).usrid
+        res = User.objects.get(nickname=nickname)
         return JsonResponse({
             'state': '200',
             'message': '登录成功',
-            'usrid': res
+            'usrid': res.usrid
         })
     except Exception as e:
         # logging.info(e)
@@ -122,10 +135,13 @@ def getResult(request: HttpRequest):
         result = Result()
         imgid = request.POST.get('imgid')
         usrid = request.POST.get('usrid')
+        print(imgid,usrid)
         result.imgid = YogaImage.objects.get(imgid=imgid)
         original = YogaImage.objects.get(imgid=imgid).image
-        result.uploadImg = request.FILES.get('uploadimg')
-        result.compareImg = compareYoga(result.uploadImg.url, original.url)
+        print(request.FILES['file'])
+        result.uploadImg = request.FILES.get('file')
+        #result.compareImg = compareYoga(result.uploadImg.url, original.url)
+        result.compareImg = request.FILES.get('file')
         result.content = 'some difference'
         result.compareTime = timezone.now()
         result.save()
@@ -133,7 +149,7 @@ def getResult(request: HttpRequest):
         studyRecord.resultid = result
         studyRecord.usrid = User.objects.get(usrid=usrid)
         studyRecord.save()
-        imagepath = os.path.join(settings.WEB_HOST_MEDIA_URL, str(result.compareImg))
+        imagepath = os.path.join(WEB_HOST_MEDIA_URL, str(result.compareImg))
         return JsonResponse({
             'state': '200',
             'message': '获取结果图片成功',
@@ -149,7 +165,8 @@ def getResult(request: HttpRequest):
 def compareYoga(uploadimg: str, original: str):
     print('compareYoga....')
     # 填充具体算法
-    compareImg = "result/{}".format('a.jpg')
+    print(uploadimg, original)
+    compareImg = ""
     return compareImg
 
 
@@ -157,18 +174,18 @@ def compareYoga(uploadimg: str, original: str):
 def getStudyRecord(request: HttpRequest):
     print(request.body)
     try:
-        urls = ''
+        urls = []
         payload = simplejson.loads(request.body)
         usrid = payload['usrid']
         result = StudyRecord.objects.filter(usrid=usrid)
         for sr in result:
             res = Result.objects.get(resultId=sr.resultid.resultId)
-            imagepath = os.path.join(settings.WEB_HOST_MEDIA_URL, str(res.compareImg))
-            urls += imagepath + ','
+            imagepath = os.path.join(WEB_HOST_MEDIA_URL, str(res.compareImg))
+            urls.append(imagepath)
         return JsonResponse({
             'state': '200',
             'message': '获取学习记录成功',
-            'data': urls[:len(urls) - len(',')]
+            'data': urls
         })
     except Exception as e:
         # logging.info(e)
@@ -181,8 +198,9 @@ def addFavorites(request: HttpRequest):
     print(request.body)
     try:
         favorites = Favorites()
-        imgid = request.POST.get('imgid')
-        usrid = request.POST.get('usrid')
+        payload = simplejson.loads(request.body)
+        imgid = payload['imgid']
+        usrid = payload['usrid']
         favorites.imgid = YogaImage.objects.get(imgid=imgid)
         favorites.usrid = User.objects.get(usrid=usrid)
         favorites.save()
@@ -201,8 +219,9 @@ def addFavorites(request: HttpRequest):
 def delFavorites(request: HttpRequest):
     print(request.body)
     try:
-        imgid = request.POST.get('imgid')
-        usrid = request.POST.get('usrid')
+        payload = simplejson.loads(request.body)
+        imgid = payload['imgid']
+        usrid = payload['usrid']
         favorites = Favorites.objects.filter(imgid=imgid).filter(usrid=usrid)
         print(favorites)
         favorites.delete()
@@ -237,19 +256,19 @@ def delAllFavorites(request: HttpRequest):
 def getFavorites(request: HttpRequest):
     print(request.body)
     try:
-        urls = ''
+        urls = []
         payload = simplejson.loads(request.body)
         usrid = payload['usrid']
         result = Favorites.objects.filter(usrid=usrid)
+        print(result)
         for fa in result:
             res = YogaImage.objects.get(imgid=fa.imgid.imgid)
-            print(res)
-            imagepath = os.path.join(settings.WEB_HOST_MEDIA_URL, str(res.image))
-            urls += imagepath + ','
+            imagepath = os.path.join(WEB_HOST_MEDIA_URL, str(res.image))
+            urls.append(imagepath)
         return JsonResponse({
             'state': '200',
             'message': '获取收藏列表成功',
-            'data': urls[:len(urls) - len(',')]
+            'data': urls
         })
     except Exception as e:
         # logging.info(e)
@@ -259,10 +278,11 @@ def getFavorites(request: HttpRequest):
 
 # Post    /usr/ifFavorite                     //判断用户是否收藏
 def ifFavorites(request: HttpRequest):
-    print(request.body)
+    print("if",request.body)
     try:
-        imgid = request.POST.get('imgid')
-        usrid = request.POST.get('usrid')
+        payload = simplejson.loads(request.body)
+        imgid = payload['imgid']
+        usrid = payload['usrid']
         favorites = Favorites.objects.filter(imgid=imgid).filter(usrid=usrid)
         print(favorites)
         if favorites.count() == 0:
@@ -287,12 +307,12 @@ def ifFavorites(request: HttpRequest):
 def getAllUsr(request: HttpRequest):
     print(request.body)
     try:
-        user = User.objects.all()
+        user = list(User.objects.values().all())
         print(user)
         return JsonResponse({
             'state': '200',
             'message': '获取全部用户信息成功',
-            'data': serializers.serialize('json', user, ensure_ascii=False)
+            'data': user
         })
     except Exception as e:
         # logging.info(e)
@@ -322,12 +342,14 @@ def login(request: HttpRequest):
 def getAllYoga(request: HttpRequest):
     print(request.body)
     try:
-        yoga = YogaImage.objects.all()
-        print(yoga)
+        yogalist = list(YogaImage.objects.values().all())
+        print(yogalist)
+        for yogaimg in yogalist:
+            yogaimg['image'] = os.path.join(WEB_HOST_MEDIA_URL, str(yogaimg['image']))
         return JsonResponse({
             'state': '200',
             'message': '获取瑜伽列表成功',
-            'data': serializers.serialize('json', yoga, ensure_ascii=False)
+            'data': yogalist
         })
     except Exception as e:
         # logging.info(e)

@@ -9,17 +9,16 @@ window.onload = function () {
 	 		var html="";
             for(var i=0,len=imgdata.length;i<len;i++)
             {
-                console.log(imgdata[i]['fields']);
-                var imgpath="http://127.0.0.1:8000/images/"+imgdata[i]['fields']['image'];
+                var imgpath=imgdata[i]['image'];
                 html+='<div class="eight wide tablet four wide computer column">'+
                                                             '<div class="ui segments">'+
                                                                 '<div class="ui segment">'+
-                                                                    '<h5 class="ui header">'+imgdata[i]['fields']['yogaName']+
+                                                                    '<h5 class="ui header">'+imgdata[i]['yogaName']+
                                                                     '</h5></div>'+
                                                                 '<div class="ui segment"><div class="ui fluid image">'+
                                                                         '<svg width="150" height="120"><image  xlink:href="'+
                                                                         imgpath+
-                                                                        '" x="0" y="0" width="100%" height="100%"></image>'+
+                                                                        '" x="0" y="0" width="200%" height="200%"></image>'+
                                                                         '</svg></div></div></div></div>';
             }
             document.getElementById("imgbox").innerHTML=html;
@@ -48,12 +47,11 @@ function getYogaList(level){
 	 		var html="";
             for(var i=0,len=imgdata.length;i<len;i++)
             {
-                console.log(imgdata[i]['fields']);
-                var imgpath="http://127.0.0.1:8000/images/"+imgdata[i]['fields']['image'];
+                var imgpath=imgdata[i]['image'];
                 html+='<div class="eight wide tablet four wide computer column">'+
                                                             '<div class="ui segments">'+
                                                                 '<div class="ui segment">'+
-                                                                    '<h5 class="ui header">'+imgdata[i]['fields']['yogaName']+
+                                                                    '<h5 class="ui header">'+imgdata[i]['yogaName']+
                                                                     '</h5></div>'+
                                                                 '<div class="ui segment"><div class="ui fluid image">'+
                                                                         '<svg width="150" height="120"><image  xlink:href="'+

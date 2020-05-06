@@ -18,6 +18,7 @@ from django.utils.translation import gettext_lazy as _
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MEDIA_URL = '/images/'#MEDIA：指用户上传的文件,可变文件的文件夹
 MEDIA_ROOT = os.path.join(BASE_DIR, 'yogaMaster/images/')
+#MEDIA_ROOT = 'http://127.0.0.1:8000/images/'
 WEB_HOST_MEDIA_URL = 'http://127.0.0.1:8000/images/'
 
 
@@ -88,9 +89,13 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'yoga',
         'USER': 'root',
-        'PASSWORD':'123456',
+        'PASSWORD':'root',
         'HOST':'localhost',
         'PORT':'3306',
+        'OPTIONS': {
+            'init_command': 'SET sql_mode="STRICT_TRANS_TABLES"',
+            'charset': 'utf8mb4'
+        }
     }
 }
 
