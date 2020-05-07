@@ -1,7 +1,16 @@
+var url=location.href; 
+var tmp1="",temp2="",data={},usrid="";
+console.log(url);
+if(url.indexOf("?")!=-1){
+    tmp1=url.split("?")[1];  
+    tmp2=tmp1.split("=")[1]; 
+    usrid=tmp2;
+} else{
+    usrid= 2;
+}
+data["usrid"]= usrid;
+console.log(data);
 window.onload = function () {
-	 var data={};
-    data["usrid"]= 2;
-    console.log(data);
 	 $.ajax({
 	 	url:"/usr/getStudyRecord",
 	 	type:"POST",
@@ -22,7 +31,7 @@ window.onload = function () {
             document.getElementById("imgbox").innerHTML=html;
 	 	},
 	 	error:function(e){
-	 		alert("获取失败！请重试！");
+	 		alert("没有下一个用户了！");
 	 	}
 	 });
     $.ajax({
@@ -41,7 +50,7 @@ window.onload = function () {
             document.getElementById("usrbox").innerHTML=html;
 	 	},
 	 	error:function(e){
-	 		alert("获取失败！请重试！");
+	 		alert("没有下一个用户了！");
 	 	}
 	 });
 
@@ -49,5 +58,12 @@ window.onload = function () {
 }
 
 function nextuser(){
-    window.location.href="/static/usrStudyRecord.html";
+    usrid++;
+    var myurl="/static/usrStudyRecord.html"+"?"+"usrid="+usrid;
+    window.location.assign(encodeURI(myurl));
+}
+
+function toPage(){
+    var myurl="/static/usrFav.html"+"?"+"usrid="+usrid;
+    window.location.assign(encodeURI(myurl));
 }

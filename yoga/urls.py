@@ -29,7 +29,7 @@ def getAllResult(args):
 
 
 urlpatterns = [
-    url(r'^$', TemplateView.as_view(template_name="yogaManagement.html")),
+    url(r'^$', TemplateView.as_view(template_name="login.html")),
     path('admin/', admin.site.urls),
     #小程序接口
     path('home/getYogaByLevel', getYogaByLevel),

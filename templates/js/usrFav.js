@@ -1,7 +1,16 @@
+var url=location.href; 
+var tmp1="",temp2="",data={}, usrid="";
+console.log(url);
+if(url.indexOf("?")!=-1){
+    tmp1=url.split("?")[1];  
+    tmp2=tmp1.split("=")[1]; 
+    usrid=tmp2;
+} else{
+    usrid="2";
+}
+data["usrid"]= usrid;
+console.log(data);
 window.onload = function () {
-    var data={};
-    data["usrid"]= 2;
-    console.log(data);
 	 $.ajax({
 	 	url:"/usr/getFavorites",
 	 	type:"POST",
@@ -48,5 +57,12 @@ window.onload = function () {
 }
 
 function nextuser(){
-    window.location.href="/static/usrFav.html";
+    usrid++;
+    var myurl="/static/usrFav.html"+"?"+"usrid="+usrid;
+    window.location.assign(encodeURI(myurl));
+}
+
+function toPage(){
+    var myurl="/static/usrStudyRecord.html"+"?"+"usrid="+usrid;
+    window.location.assign(encodeURI(myurl));
 }

@@ -2,28 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fe04b7c6-ef0b-4447-95ca-df6fafed9f30" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/js/usrFav.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/js/usrStudyRecord.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/js/usrInfo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/yoga.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/yoga.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/js/addYoga.js" beforeDir="false" afterPath="$PROJECT_DIR$/templates/js/addYoga.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/js/yogaMagage.js" beforeDir="false" afterPath="$PROJECT_DIR$/templates/js/yogaMagage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/js/usrFav.js" beforeDir="false" afterPath="$PROJECT_DIR$/templates/js/usrFav.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/js/usrStudyRecord.js" beforeDir="false" afterPath="$PROJECT_DIR$/templates/js/usrStudyRecord.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/usrFav.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/usrFav.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/usrInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/usrInfo.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/usrStudyRecord.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/usrStudyRecord.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yoga/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/yoga/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yogaMaster/images/avater/0.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/yogaMaster/images/avater/2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/yogaMaster/images/avater/3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/yogaMaster/images/result/a.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/yogaMaster/images/upload/0.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/yogaMaster/images/upload/1.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/yogaMaster/images/upload/2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/yogaMaster/images/upload/3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/yogaMaster/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/yogaMaster/migrations/0002_auto_20200423_1426.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/yogaMaster/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/yogaMaster/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yogaMaster/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/yogaMaster/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yoga/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/yoga/urls.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
