@@ -59,28 +59,6 @@ def getYogaImg(request: HttpRequest):
         print(e)
         return HttpResponseBadRequest()
 
-
-# Get    /usr/getUsrAvater                        //获取用户头像
-def getUsrAvater(request: HttpRequest):
-    print(request.body)
-    try:
-        payload = simplejson.loads(request.body)
-        usrid = payload['usrid']
-        user = User.objects.get(usrid=usrid)
-        print(settings.BASE_DIR)
-        print(user.usrProfile)
-        imagepath = os.path.join(WEB_HOST_MEDIA_URL, str(user.usrProfile))
-        return JsonResponse({
-            'state': '200',
-            'message': '获取头像成功',
-            'data': imagepath
-        })
-    except Exception as e:
-        # logging.info(e)
-        print(e)
-        return HttpResponseBadRequest()
-
-
 # Get    /usr/getUsrInfo                        //获取用户信息
 def getUsrInfo(request: HttpRequest):
     print(request.body)

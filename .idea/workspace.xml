@@ -4,10 +4,6 @@
     <list default="true" id="fe04b7c6-ef0b-4447-95ca-df6fafed9f30" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yogaMaster/func.py" beforeDir="false" afterPath="$PROJECT_DIR$/yogaMaster/func.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yogaMaster/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/yogaMaster/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/yogaMaster/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yogaMaster/parseParts.py" beforeDir="false" afterPath="$PROJECT_DIR$/yogaMaster/parseParts.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yogaMaster/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/yogaMaster/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -55,6 +51,9 @@
       <updated>1587640093970</updated>
     </task>
     <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.js" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

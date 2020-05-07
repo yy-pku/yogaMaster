@@ -56,12 +56,12 @@ Python manage.py  runserver
 }   
 2. Get     http://127.0.0.1:8000/home/getYogaImg          
   //根据每个瑜伽动作文件名返回对应的图片  
-  request: {"yogaName":"ayoga"}   
+  request: {"yogaName":"updog"}   
   Jsonresponse：  
   {  
     "state": "200",  
     "message": "获取瑜伽图片成功",  
-    "data": "http://127.0.0.1:8000/images/yoga/1.jpg"  
+    "data": "http://127.0.0.1:8000/images/yoga/updog.jpg"  
    }
 
 3. Get    http://127.0.0.1:8000/usr/getUsrInfo  
@@ -88,9 +88,16 @@ Python manage.py  runserver
 
 5. Post    http://127.0.0.1:8000/usr/register  
   //注册  
-  var form = new FormData();  
-  form.append("usrProfile", fileInput.files[0], "/C:/Users/yang/Desktop/2.jpg");  
-  form.append("usrname", "yy");  
+  request:  
+  {  
+            "nickname": "yy",  
+            "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJfB1ibeMtSmJsQWOFuicG2G9gDDmH0syly1BpRqhm0mI7OSKK2aicibia5seyNsZYoURaA3RYUwUcE8fg/132",  
+            "city": "",  
+            "country": "China",  
+            "province": "",  
+            "gender": 2,  
+            "language": "zh_CN"  
+}  
   Jsonresponse：  
   {
     "state": "200",
@@ -137,39 +144,45 @@ Python manage.py  runserver
 9. Post http://127.0.0.1:8000/usr/addFavorites  
   //添加收藏  
   requset :  
-  var form = new FormData();    
-  form.append("imgid", "1");
-  form.append("usrid", "1");
-  JsonResponse{
-            'state': '200',
-            'message': '收藏成功'
-  }
+  {  
+    "imgid":"1",  
+    "usrid":"1"  
+  }   
+  JsonResponse:  
+  {  
+            'state': '200',  
+            'message': '收藏成功'  
+  }  
   
 10. Post http://127.0.0.1:8000/usr/delFavorites  
   //取消收藏  
   requset :  
-  var form = new FormData();    
-  form.append("imgid", "1");
-  form.append("usrid", "1");
-  JsonResponse{
-            'state': '200',
-            'message': '取消收藏成功'
-  } 
+  {  
+    "imgid":"1",  
+    "usrid":"1"  
+  }  
+  JsonResponse:  
+  {  
+            'state': '200',  
+            'message': '取消收藏成功'  
+  }   
 11. Get http://127.0.0.1:8000/usr/delAllFavorites  
   //取消所有收藏  
-  requset :  
-  {"usrid":"1"} 
-  JsonResponse{
-            'state': '200',
-            'message': '取消所有收藏成功'
-  }
+  requset :    
+  {"usrid":"1"}   
+  JsonResponse:  
+  {  
+            'state': '200',  
+            'message': '取消所有收藏成功'  
+  }  
   
   11. Get http://127.0.0.1:8000/usr/ifFavorite  
   //判断是否收藏  
   requset :  
-  var form = new FormData();    
-  form.append("imgid", "1");
-  form.append("usrid", "1");
+  {  
+    "imgid":"1",  
+    "usrid":"1"  
+  }  
   JsonResponse
   {
     "state": "200",
@@ -204,30 +217,60 @@ Python manage.py  runserver
 4. Get    http://127.0.0.1:8000/usr/getAllUsr  
   //获取全部用户信息列表  
   Jsonresponse：  
-  {  
-    "state": "200",  
-    "message": "获取全部用户信息成功",  
-    "data": "[{\"model\": \"yogaMaster.user\", \"pk\": 1, \"fields\": {\"usrname\": \"yy\", \"password\": \"abc\", \"usrProfile\": \"avater/2.jpg\"}，{\"usrname\": \"yy1\", \"password\": \"abc\", \"usrProfile\": \"avater/1.jpg\"}}]"  
-  }
+{
+    "state": "200",
+    "message": "获取全部用户信息成功",
+    "data": [
+        {
+            "usrid": 1,
+            "nickname": "yy",
+            "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJfB1ibeMtSmJsQWOFuicG2G9gDDmH0syly1BpRqhm0mI7OSKK2aicibia5seyNsZYoURaA3RYUwUcE8fg/132",
+            "city": "",
+            "country": "China",
+            "province": "",
+            "gender": 2,
+            "language": "zh_CN",
+            "lastLoginTime": "2020-05-06"
+        },
+        {
+            "usrid": 2,
+            "nickname": "杨非軟",
+            "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJfB1ibeMtSmJsQWOFuicG2G9gDDmH0syly1BpRqhm0mI7OSKK2aicibia5seyNsZYoURaA3RYUwUcE8fg/132",
+            "city": "",
+            "country": "China",
+            "province": "",
+            "gender": 2,
+            "language": "zh_CN",
+            "lastLoginTime": "2020-05-06"
+        }
+   ]
+}
 
-5. (新增)  Get    http://127.0.0.1:8000/usr/login  
-  //后台管理员登录，可写死用户名密码admin/admin  
-  request:   
-  {"usrname":"admin","password":"admin"}   
-  Jsonresponse：  
-   {  
-  ​    "state": "200",  
-  ​    "message": "登录成功"
-   }
 
-6. (新增) Get    http://127.0.0.1:8000/home/getAllYoga                
+6.  Get    http://127.0.0.1:8000/home/getAllYoga                
   //返回全部的瑜伽列表  
   Jsonresponse：  
-  {  
-    "state": "200",  
-    "message": "获取瑜伽列表成功",  
-    "data": "[{\"model\": \"yogaMaster.yoga\", \"pk\": \"ayoga\", \"fields\": {\"level\": 1, \"video\": \"avideourl\"}}, {\"model\": \"yogaMaster.yoga\", \"pk\": \"byoga\", \"fields\": {\"level\": 1, \"video\": \"bvideourl\"}}]"  
-   }  
+{
+    "state": "200",
+    "message": "获取瑜伽列表成功",
+    "data": [
+        {
+            "imgid": 1,
+            "yogaName": "buttocks",
+            "level": 1,
+            "imgDescription": "buttocks",
+            "image": "http://127.0.0.1:8000/images/yoga/buttocks.jpg"
+        },
+        {
+            "imgid": 2,
+            "yogaName": "door",
+            "level": 1,
+            "imgDescription": "door",
+            "image": "http://127.0.0.1:8000/images/yoga/door.jpg"
+        }
+]
+}
+
 
 7. Get    http://127.0.0.1:8000/home/getYogaByLevel                
   //根据level返回对应的瑜伽列表（初中高代号123）  
@@ -264,7 +307,7 @@ yogaimage|imgid：int，每个动作id（pk）
 -|yogaName：varchar，瑜伽名
 -|Level：int，瑜伽等级
 -|imgDescription：varchar，每个动作描述
--|image：varchar，每个动作的图片文件路径
+-|image：ImageFiled，每个动作的图片文件路径
 user|usrid：int，用户id（pk）
 -|nickname：varchar，用户昵称
 -|city：varchar，用户城市
@@ -282,7 +325,7 @@ favorites|favoritesId：int，收藏id （pk）
 -|imgid：int，每个动作id（fk）
 result|resultId：int，比对结果id（pk）
 -|imgid：int，每个动作id（fk）
--|uploadImg：varchar，用户上传图片文件路径
+-|uploadImg：ImageFiled，用户上传图片文件路径
 -|compareImg：varchar，二者比对结果图文件路径
 -|content：varchar，二者比对结果描述
 -|compareTime：Date，比对时间
