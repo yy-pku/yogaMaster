@@ -2,15 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fe04b7c6-ef0b-4447-95ca-df6fafed9f30" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/js/usrInfo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yogaMaster/evaluate_ch.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yogaMaster/func.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yogaMaster/parseParts.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yogaMaster/poseParts.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/js/usrFav.js" beforeDir="false" afterPath="$PROJECT_DIR$/templates/js/usrFav.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/js/usrStudyRecord.js" beforeDir="false" afterPath="$PROJECT_DIR$/templates/js/usrStudyRecord.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/usrFav.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/usrFav.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/usrInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/usrInfo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/usrStudyRecord.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/usrStudyRecord.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yoga/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/yoga/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yoga/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/yoga/urls.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,6 +23,11 @@
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\PycharmProjects\yoga\yogaMaster" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
