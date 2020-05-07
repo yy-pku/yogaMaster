@@ -2,7 +2,7 @@ import argparse
 import glob
 import json
 import os
-from blog.poseParts import Pose, Part, PoseSequence
+from yogaMaster.poseParts import Pose, Part, PoseSequence
 
 
 def main():

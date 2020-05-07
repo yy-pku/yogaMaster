@@ -36,7 +36,7 @@ class Result(models.Model):
     resultId = models.AutoField(primary_key='true')
     imgid = models.ForeignKey('yogaImage',on_delete=models.CASCADE)
     uploadImg = models.ImageField(upload_to='upload')
-    compareImg = models.ImageField(upload_to='result')
+    compareImg = models.CharField(max_length=48)
     content = models.CharField(max_length=255)
     compareTime = models.DateField(auto_now='true')
 

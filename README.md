@@ -9,25 +9,20 @@
 
 ## 基础操作
 
->1. 使用mysql数据库  
-django.db.backends.mysql
->2. 更改时区和语言  
-LANGUAGES = [
-    ('zh-Hans', _('Chinese')),
-]  
-LANGUAGE_CODE = 'zh-Hans'  
-TIME_ZONE = 'Asia/Shanghai'  
->3. 迁移主要是对model的管理  
-Python manage.py makemigrations  
-Python manage.py migrate  
->4. 运行项目  
+>1. 数据库迁移  
+python manage.py dbshell 进到数据库中，执行  
+delete from django_migrations where app='your_appname';  
+删除migrations文件  
+python manage.py makemigrations  
+python manage.py migrate
+>2. 运行项目  
 Python manage.py  runserver
 
 ## 接口设计
 
 >传输 json 基本格式  
 {   
-"state": 200, //状态码到时候会给出一个表格，标识各种状态码意义  
+"state": 200,   
 "message": "success",   
 "data": [  
 ]   
@@ -39,19 +34,34 @@ Python manage.py  runserver
   //根据level返回对应的瑜伽列表（初中高代号123）  
   request：{"level":"1"}  
   Jsonresponse：  
-  {  
+{  
     "state": "200",  
     "message": "获取瑜伽列表成功",  
-    "data": "[{\"model\": \"yogaMaster.yogaimage\", \"pk\": 3, \"fields\": {\"yogaName\": \"半月式\", \"level\": 1, \"imgDescription\": \"nice\", \"image\": \"yoga/1.jpg\"}}, {\"model\": \"yogaMaster.yogaimage\", \"pk\": 4, \"fields\": {\"yogaName\": \"半月式\", \"level\": 1, \"imgDescription\": \"nice\", \"image\": \"yoga/2.jpg\"}}]"  
-   }  
-
+    "data": [  
+        {  
+            "imgid": 1,  
+            "yogaName": "buttocks",  
+            "level": 1,  
+            "imgDescription": "buttocks",  
+            "image": "http://127.0.0.1:8000/images/yoga/buttocks.jpg"  
+        },  
+        {  
+            "imgid": 2,  
+            "yogaName": "door",  
+            "level": 1,  
+            "imgDescription": "door",  
+            "image": "http://127.0.0.1:8000/images/yoga/door.jpg"  
+        }  
+    ]  
+}   
 2. Get     http://127.0.0.1:8000/home/getYogaImg          
   //根据每个瑜伽动作文件名返回对应的图片  
   request: {"yogaName":"ayoga"}   
-  {
-    "state": "200",
-    "message": "获取瑜伽图片成功",
-    "data": "http://127.0.0.1:8000/images/yoga/1.jpg"
+  Jsonresponse：  
+  {  
+    "state": "200",  
+    "message": "获取瑜伽图片成功",  
+    "data": "http://127.0.0.1:8000/images/yoga/1.jpg"  
    }
 
 3. Get    http://127.0.0.1:8000/usr/getUsrInfo  
@@ -61,17 +71,20 @@ Python manage.py  runserver
   {  
     "state": "200",  
     "message": "获取用户信息成功",  
-    "data": "[{\"model\": \"yogaMaster.user\", \"pk\": 1, \"fields\": {\"usrname\": \"yy\", \"password\": \"abc\", \"usrProfile\": \"yogaMaster/images/avater/2.jpg\"}}]"  
-   }
-
-4. Get    http://127.0.0.1:8000/usr/getUsrAvater  
-  //获取用户头像  
-  request: {"userid":"1"}  
-  {
-    "state": "200",
-    "message": "获取头像成功",
-    "data": "http://127.0.0.1:8000/images/avater/1.jpg"
-   }  
+    "data": [  
+        {  
+            "usrid": 1,  
+            "nickname": "yy",  
+            "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJfB1ibeMtSmJsQWOFuicG2G9gDDmH0syly1BpRqhm0mI7OSKK2aicibia5seyNsZYoURaA3RYUwUcE8fg/132",  
+            "city": "",  
+            "country": "China",  
+            "province": "",  
+            "gender": 2,  
+            "language": "zh_CN",  
+            "lastLoginTime": "2020-05-06"  
+        }  
+    ]  
+}  
 
 5. Post    http://127.0.0.1:8000/usr/register  
   //注册  
@@ -176,6 +189,7 @@ Python manage.py  runserver
   ​    "message": "获取学习记录成功",  
   ​    "data": "http://127.0.0.1:8000/yogaMaster/images/result/a.jpg,http://127.0.0.1:8000/yogaMaster/images/yoga/2.jpg"  
   }
+  
 
 3. Get    http://127.0.0.1:8000/usr/getFavorites  
   //获取用户收藏  
@@ -187,7 +201,7 @@ Python manage.py  runserver
   ​    "data": "http://127.0.0.1:8000/yogaMaster/images/yoga/1.jpg,http://127.0.0.1:8000/yogaMaster/images/yoga/2.jpg,http://127.0.0.1:8000/yogaMaster/images/yoga/3.jpg,http://127.0.0.1:8000/yogaMaster/images/yoga/4.jpg"  
   }
 
-4. (新增) Get    http://127.0.0.1:8000/usr/getAllUsr  
+4. Get    http://127.0.0.1:8000/usr/getAllUsr  
   //获取全部用户信息列表  
   Jsonresponse：  
   {  
@@ -252,9 +266,14 @@ yogaimage|imgid：int，每个动作id（pk）
 -|imgDescription：varchar，每个动作描述
 -|image：varchar，每个动作的图片文件路径
 user|usrid：int，用户id（pk）
--|usrname：varchar，用户名
--|password：varchar，用户密码
--|usrProfile：varchar，用户头像文件路径
+-|nickname：varchar，用户昵称
+-|city：varchar，用户城市
+-|country：varchar，用户国籍
+-|province：varchar，用户省份
+-|gender：int，用户性别
+-|language：varchar，用户使用语言
+-|lastLoginTime：Date，最近登录时间
+-|avatarUrl：varchar，用户头像链接
 studyrecord|studyRecordId：int，学习记录id（pk）
 -|Usrid：int，用户id（fk）
 -|resultId：int，比对结果id（fk）
@@ -269,11 +288,8 @@ result|resultId：int，比对结果id（pk）
 -|compareTime：Date，比对时间
 
 
-## 进度及问题
+## 一些问题说明
 
->对图片资源的请求单独列出来以httpresponse的形式返回，文字以json形式返回  
-关于图片应该是存储到文件夹下，数据库中存储图片路径  
-读取的时候先从数据库中读取路径，再到相应路径下读取图片返回  
-django生成model时imageFiled在数据库中就是imageField，读取时imageFiled.url  
-同一图片不同显示分辨率应需要多个尺寸  
-关于数据库的设计还有问题，restful下应该将所有前端需要的资源在一个接口请求中都返回，这样的话要么数据库冗余，要么执行多次查询
+>1. 前后端通过json格式传输数据  
+>2. 图片存储到文件夹下，数据库中存储图片路径,读取的时候先从数据库中读取路径，再到相应路径下读取图片返回，django生成model时imageFiled在数据库中就是imageField，读取时imageFiled.url。  
+>3. 同一图片不同显示分辨率应需要多个尺寸  

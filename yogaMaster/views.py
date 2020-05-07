@@ -1,16 +1,18 @@
 import os
-
-from _pytest import logging
+from .func import func
+import cv2
+import requests
+import base64
+import json
 
 # Create your views here.
 # -*- coding: utf-8 -*-
-from django.core import serializers
 from django.http import HttpRequest, HttpResponseBadRequest, JsonResponse, HttpResponse
 import simplejson
 from django.utils import timezone
 
 from yoga import settings
-from yoga.settings import WEB_HOST_MEDIA_URL
+from yoga.settings import WEB_HOST_MEDIA_URL, MEDIA_ROOT
 from .models import User, YogaImage, Result, StudyRecord, Favorites
 
 
@@ -129,6 +131,80 @@ def register(request: HttpRequest):
         return HttpResponseBadRequest()
 
 
+
+class Joint(object):
+    __circle_list = []
+
+    def __init__(self, dic):
+        self.dic = dic
+
+    def draw_line(self, img):
+        # nose ---> neck
+        cv2.line(img, (int(self.dic['nose']['x']), int(self.dic['nose']['y'])),
+                 (int(self.dic['neck']['x']), int(self.dic['neck']['y'])), (0, 255, 0), 2)
+        # nose ---> top_head
+        cv2.line(img, (int(self.dic['nose']['x']), int(self.dic['nose']['y'])),
+                 (int(self.dic['top_head']['x']), int(self.dic['top_head']['y'])), (0, 255, 0), 2)
+        # left_eye ---> left_ear
+        cv2.line(img, (int(self.dic['left_eye']['x']), int(self.dic['left_eye']['y'])),
+                 (int(self.dic['left_ear']['x']), int(self.dic['left_ear']['y'])), (0, 255, 0), 2)
+        # right_eye ---> right_ear
+        cv2.line(img, (int(self.dic['right_eye']['x']), int(self.dic['right_eye']['y'])),
+                 (int(self.dic['right_ear']['x']), int(self.dic['right_ear']['y'])), (0, 255, 0), 2)
+        # right_mouth_corner ---> nose
+        cv2.line(img, (int(self.dic['right_mouth_corner']['x']), int(self.dic['right_mouth_corner']['y'])),
+                 (int(self.dic['nose']['x']), int(self.dic['nose']['y'])), (0, 255, 0), 2)
+        # left_mouth_corner ---> nose
+        cv2.line(img, (int(self.dic['left_mouth_corner']['x']), int(self.dic['left_mouth_corner']['y'])),
+                 (int(self.dic['nose']['x']), int(self.dic['nose']['y'])), (0, 255, 0), 2)
+        # neck --> left_shoulder
+        cv2.line(img, (int(self.dic['neck']['x']), int(self.dic['neck']['y'])),
+                 (int(self.dic['left_shoulder']['x']), int(self.dic['left_shoulder']['y'])), (0, 255, 0), 2)
+        # neck --> right_shoulder
+        cv2.line(img, (int(self.dic['neck']['x']), int(self.dic['neck']['y'])),
+                 (int(self.dic['right_shoulder']['x']), int(self.dic['right_shoulder']['y'])), (0, 255, 0), 2)
+        # left_shoulder --> left_elbow
+        cv2.line(img, (int(self.dic['left_shoulder']['x']), int(self.dic['left_shoulder']['y'])),
+                 (int(self.dic['left_elbow']['x']), int(self.dic['left_elbow']['y'])), (0, 255, 0), 2)
+        # left_elbow --> left_wrist
+        cv2.line(img, (int(self.dic['left_elbow']['x']), int(self.dic['left_elbow']['y'])),
+                 (int(self.dic['left_wrist']['x']), int(self.dic['left_wrist']['y'])), (0, 255, 0), 2)
+        # right_shoulder --> right_elbow
+        cv2.line(img, (int(self.dic['right_shoulder']['x']), int(self.dic['right_shoulder']['y'])),
+                 (int(self.dic['right_elbow']['x']), int(self.dic['right_elbow']['y'])), (0, 255, 0), 2)
+        # right_elbow --> right_wrist
+        cv2.line(img, (int(self.dic['right_elbow']['x']), int(self.dic['right_elbow']['y'])),
+                 (int(self.dic['right_wrist']['x']), int(self.dic['right_wrist']['y'])), (0, 255, 0), 2)
+        # neck --> left_hip
+        cv2.line(img, (int(self.dic['neck']['x']), int(self.dic['neck']['y'])),
+                 (int(self.dic['left_hip']['x']), int(self.dic['left_hip']['y'])), (0, 255, 0), 2)
+        # neck --> right_hip
+        cv2.line(img, (int(self.dic['neck']['x']), int(self.dic['neck']['y'])),
+                 (int(self.dic['right_hip']['x']), int(self.dic['right_hip']['y'])), (0, 255, 0), 2)
+        # left_hip --> left_knee
+        cv2.line(img, (int(self.dic['left_hip']['x']), int(self.dic['left_hip']['y'])),
+                 (int(self.dic['left_knee']['x']), int(self.dic['left_knee']['y'])), (0, 255, 0), 2)
+        # right_hip --> right_knee
+        cv2.line(img, (int(self.dic['right_hip']['x']), int(self.dic['right_hip']['y'])),
+                 (int(self.dic['right_knee']['x']), int(self.dic['right_knee']['y'])), (0, 255, 0), 2)
+        # left_knee --> left_ankle
+        cv2.line(img, (int(self.dic['left_knee']['x']), int(self.dic['left_knee']['y'])),
+                 (int(self.dic['left_ankle']['x']), int(self.dic['left_ankle']['y'])), (0, 255, 0), 2)
+        # right_knee --> right_ankle
+        cv2.line(img, (int(self.dic['right_knee']['x']), int(self.dic['right_knee']['y'])),
+                 (int(self.dic['right_ankle']['x']), int(self.dic['right_ankle']['y'])), (0, 255, 0), 2)
+
+    def xunhun(self, img):
+        im1 = cv2.imread(img, cv2.IMREAD_COLOR)
+        # im2 = cv2.resize(im1, (500,900), interpolation=cv2.INTER_CUBIC)
+
+        for i in self.dic:
+            cv2.circle(im1, (int(self.dic[i]['x']), int(self.dic[i]['y'])), 5, (0, 255, 0), -1)
+
+        self.draw_line(im1)
+        return im1
+
+
 # Post    /home/getResult                    //用户根据选中的姿势上传图片得到比较结果
 def getResult(request: HttpRequest):
     try:
@@ -137,19 +213,48 @@ def getResult(request: HttpRequest):
         usrid = request.POST.get('usrid')
         print(imgid,usrid)
         result.imgid = YogaImage.objects.get(imgid=imgid)
-        original = YogaImage.objects.get(imgid=imgid).image
         print(request.FILES['file'])
         result.uploadImg = request.FILES.get('file')
-        #result.compareImg = compareYoga(result.uploadImg.url, original.url)
-        result.compareImg = request.FILES.get('file')
-        result.content = 'some difference'
-        result.compareTime = timezone.now()
         result.save()
-        studyRecord = StudyRecord()
-        studyRecord.resultid = result
-        studyRecord.usrid = User.objects.get(usrid=usrid)
-        studyRecord.save()
-        imagepath = os.path.join(WEB_HOST_MEDIA_URL, str(result.compareImg))
+        # 上传照片title，根据这个选择评估模式
+        title = YogaImage.objects.get(imgid=imgid).yogaName
+        request_url = "https://aip.baidubce.com/rest/2.0/image-classify/v1/body_analysis"
+        # 上传路径
+        filename = os.path.join(MEDIA_ROOT, str(result.uploadImg))
+        # 二进制方式打开图片文件
+        f = open(filename, 'rb')
+        img = base64.b64encode(f.read())
+        params = {"image": img}
+        access_token = "24.85ff7b63540069f746a3a4710c353a88.2592000.1591279549.282335-19733771"
+        request_url = request_url + "?access_token=" + access_token
+        headers = {'content-type': 'application/x-www-form-urlencoded'}
+        response = requests.post(request_url, data=params, headers=headers)
+        if response:
+            print(response.json())
+            # 在用户照片上进行描点绘图
+            jo = Joint(response.json()['person_info'][0]['body_parts'])
+            print("jo")
+            im1 = jo.xunhun(filename)
+            print("im1")
+            # 保存绘制结果图片
+            cv2.imwrite(os.path.join(MEDIA_ROOT,'result/{}.jpg'.format(title)), im1)
+            print("cv2")
+            # 将json文件写入file，用来评估with open(", "w") as fp
+            with open(os.path.join(MEDIA_ROOT,"file/{}.json".format(title)), "w") as fp:
+                fp.write(json.dumps(response.json(), indent=4))
+            # 生成结果图片,指明路径
+            result.compareImg = 'result/{}.jpg'.format(title)
+            # func为评估函数，返回建议contennt
+            result.content = func(title)
+            result.compareTime = timezone.now()
+            result.save()
+            studyRecord = StudyRecord()
+            studyRecord.resultid = result
+            studyRecord.usrid = User.objects.get(usrid=usrid)
+            studyRecord.save()
+            imagepath = os.path.join(WEB_HOST_MEDIA_URL, str(result.compareImg))
+        else:
+            print('response does not work!')
         return JsonResponse({
             'state': '200',
             'message': '获取结果图片成功',
@@ -160,14 +265,6 @@ def getResult(request: HttpRequest):
         # logging.info(e)
         print(e)
         return HttpResponseBadRequest()
-
-
-def compareYoga(uploadimg: str, original: str):
-    print('compareYoga....')
-    # 填充具体算法
-    print(uploadimg, original)
-    compareImg = ""
-    return compareImg
 
 
 # Get    /usr/getStudyRecord               //获取用户学习记录

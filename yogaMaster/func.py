@@ -1,14 +1,10 @@
-import argparse
-import os
-import sys
-import subprocess
-import numpy as np
-import matplotlib.pyplot as plt
-from blog.parseParts import parse_sequence
-from blog.evaluate_ch import evaluate_pose
+from yoga.settings import MEDIA_ROOT
+from yogaMaster.parseParts import parse_sequence
+from yogaMaster.evaluate_ch import evaluate_pose
+
 
 def func(text):
-    pose_seq = parse_sequence('media/file/'+text+'.json')
+    pose_seq = parse_sequence(MEDIA_ROOT+'file/'+text+'.json')
     (correct, feedback) = evaluate_pose(pose_seq, text)
     if correct:
         return 'Exercise performed correctly!'
