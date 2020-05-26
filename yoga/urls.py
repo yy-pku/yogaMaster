@@ -19,7 +19,7 @@ from django.contrib import admin
 from django.urls import path
 from django.views.generic import TemplateView
 
-from yogaMaster.views import getYogaByLevel, getYogaImg, getUsrAvater, getUsrInfo, register, getResult, getStudyRecord, \
+from yogaMaster.views import getYogaByLevel, getYogaImg, getUsrInfo, register, getResult, getStudyRecord, \
     getFavorites, getAllUsr, login, getAllYoga, addYoga, addFavorites, delFavorites, delAllFavorites, ifFavorites
 from . import settings
 
@@ -43,7 +43,6 @@ urlpatterns = [
     path('usr/ifFavorite', ifFavorites),
     path('usr/delAllFavorites', delAllFavorites),
     path('usr/register', register),
-    path('usr/getUsrAvater', getUsrAvater),
 
 
     #后端管理新增接口
