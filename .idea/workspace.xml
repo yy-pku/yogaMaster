@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="fe04b7c6-ef0b-4447-95ca-df6fafed9f30" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yoga/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/yoga/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/js/yogaMagage.js" beforeDir="false" afterPath="$PROJECT_DIR$/templates/js/yogaMagage.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

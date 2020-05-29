@@ -18,7 +18,7 @@ window.onload = function () {
                                                                 '<div class="ui segment"><div class="ui fluid image">'+
                                                                         '<svg width="150" height="120"><image  xlink:href="'+
                                                                         imgpath+
-                                                                        '" x="0" y="0" width="200%" height="200%"></image>'+
+                                                                        '" x="0" y="0" width="100%" height="100%"></image>'+
                                                                         '</svg></div></div></div></div>';
             }
             document.getElementById("imgbox").innerHTML=html;
